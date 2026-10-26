@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monkotorix — Different Minds. Endless Possibilities.</title>
+  <meta name="description" content="A play-based developmental learning platform designed to help children build essential skills through games, created with neurodivergent children in mind.">
+  <link rel="canonical" href="https://monkotorix.com/">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5edda" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1124" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monkotorix">
+  <meta property="og:title" content="Monkotorix — Different Minds. Endless Possibilities.">
+  <meta property="og:description" content="A play-based developmental learning platform, created with neurodivergent children in mind. Two games now in open beta.">
+  <meta property="og:url" content="https://monkotorix.com/">
+  <meta property="og:image" content="https://monkotorix.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/assets/fonts/fraunces-latin-soft-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/inter-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/fraunces-latin-soft-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="/assets/site.js"></script>
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/fraunces-latin-soft-normal.woff2') format('woff2')}
+    @font-face{font-family:'Fraunces';font-style:italic;font-weight:100 900;font-display:swap;src:url('/assets/fonts/fraunces-latin-soft-italic.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin-400-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('/assets/fonts/inter-latin-500-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/inter-latin-600-normal.woff2') format('woff2')}
+
+    /* ── Tokens: the Sofmon cove palette by morning (light) and Stay Cove's night (dark) ── */
+    :root{
+      color-scheme:light;
+      --bg:#f5edda; --bg-alt:#efe6d2; --surface:#fbf7ee; --surface-2:#f7f0e0;
+      --text:#1b2436; --muted:#5a5243; --line:rgba(27,36,54,.14); --line-strong:rgba(27,36,54,.26);
+      --accent:#e07b38; --accent-hi:#ef9a4c; --accent-ink:#14213a; --accent-text:#9a4a17;
+      --link:#1b5a62; --focus:#1b5a62;
+      --band:#14213a; --band-2:#1d2d4f; --band-text:#f2ecdb; --band-muted:#c3bba7; --band-accent:#f2b85e;
+      --shadow:0 1px 2px rgba(20,33,58,.06),0 6px 18px rgba(20,33,58,.07);
+      --shadow-lg:0 22px 50px rgba(20,33,58,.20),0 2px 6px rgba(20,33,58,.08);
+      --a1:#e07b38; --a2:#2d8a8a; --a3:#7a68b3; --a4:#d49a26; --a5:#cf5f78; --a6:#5f9150;
+      /* hero */
+      --sky-0:#e6e3ef; --sky-1:#f4ead6; --sky-2:#f6d9ab;
+      --glow:rgba(242,184,94,.85); --sun:#f2a85a; --far:#bfb0cc; --sea-0:#5fb6ad; --sea-1:#2d8a8a; --glint:#fff1cf;
+      --head-l:#6f9b7c; --head-r:#5f8f73; --sand:#ecd3a3; --near:#a9c184; --front:#93b06f;
+      --tree:#4f8a62; --tree-near:#3f7a55; --trunk:#8a6a4a; --path-0:#f6e8c6; --path-1:#efd9a8; --dot:#fffaf0;
+      --cloud:#fffaf2; --cloud-o:.9; --star-o:0; --spark:#e9a64a; --bird:#1b2436;
+      --lh-body:#fbf3e3; --lh-band:#c2641f; --lh-roof:#14213a; --lh-lamp:#f2b85e; --beam-o:0; --stop-ring:#fffaf0;
+      --r-lg:1.5rem; --r-md:1.25rem; --r-sm:.75rem;
+      --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+      --font-sans:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    }
+    @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+      color-scheme:dark;
+      --bg:#0c1124; --bg-alt:#10173a; --surface:#141c3e; --surface-2:#18214a;
+      --text:#f1e5c8; --muted:#b3bacd; --line:rgba(217,164,95,.22); --line-strong:rgba(241,229,200,.32);
+      --accent:#e8b46f; --accent-hi:#f2c88b; --accent-ink:#231607; --accent-text:#e2b06e;
+      --link:#eec584; --focus:#eec584;
+      --band:#070b18; --band-2:#0f1530; --band-text:#f1e5c8; --band-muted:#b3bacd; --band-accent:#eec584;
+      --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+      --shadow-lg:0 22px 50px rgba(0,0,0,.55),0 0 40px rgba(61,142,160,.10);
+      --a1:#ef9a4c; --a2:#4fb3ad; --a3:#a596e0; --a4:#f2b85e; --a5:#ec8aa2; --a6:#8fc27a;
+      --sky-0:#0b1022; --sky-1:#161b3f; --sky-2:#3a3166;
+      --glow:rgba(238,197,132,.38); --sun:#f1e5c8; --far:#2b2b55; --sea-0:#1f4c5c; --sea-1:#0e2536; --glint:#eec584;
+      --head-l:#17304a; --head-r:#132941; --sand:#34395a; --near:#1a2a43; --front:#142238;
+      --tree:#0f2438; --tree-near:#0c1d30; --trunk:#0c1828; --path-0:#bfae88; --path-1:#9c8b68; --dot:#f1e5c8;
+      --cloud:#2a3163; --cloud-o:.55; --star-o:.85; --spark:#eec584; --bird:#f1e5c8;
+      --lh-body:#d9cfb8; --lh-band:#a4501a; --lh-roof:#0c1124; --lh-lamp:#ffd98a; --beam-o:.45; --stop-ring:#f1e5c8;
+    }}
+    :root[data-theme="dark"]{
+      color-scheme:dark;
+      --bg:#0c1124; --bg-alt:#10173a; --surface:#141c3e; --surface-2:#18214a;
+      --text:#f1e5c8; --muted:#b3bacd; --line:rgba(217,164,95,.22); --line-strong:rgba(241,229,200,.32);
+      --accent:#e8b46f; --accent-hi:#f2c88b; --accent-ink:#231607; --accent-text:#e2b06e;
+      --link:#eec584; --focus:#eec584;
+      --band:#070b18; --band-2:#0f1530; --band-text:#f1e5c8; --band-muted:#b3bacd; --band-accent:#eec584;
+      --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+      --shadow-lg:0 22px 50px rgba(0,0,0,.55),0 0 40px rgba(61,142,160,.10);
+      --a1:#ef9a4c; --a2:#4fb3ad; --a3:#a596e0; --a4:#f2b85e; --a5:#ec8aa2; --a6:#8fc27a;
+      --sky-0:#0b1022; --sky-1:#161b3f; --sky-2:#3a3166;
+      --glow:rgba(238,197,132,.38); --sun:#f1e5c8; --far:#2b2b55; --sea-0:#1f4c5c; --sea-1:#0e2536; --glint:#eec584;
+      --head-l:#17304a; --head-r:#132941; --sand:#34395a; --near:#1a2a43; --front:#142238;
+      --tree:#0f2438; --tree-near:#0c1d30; --trunk:#0c1828; --path-0:#bfae88; --path-1:#9c8b68; --dot:#f1e5c8;
+      --cloud:#2a3163; --cloud-o:.55; --star-o:.85; --spark:#eec584; --bird:#f1e5c8;
+      --lh-body:#d9cfb8; --lh-band:#a4501a; --lh-roof:#0c1124; --lh-lamp:#ffd98a; --beam-o:.45; --stop-ring:#f1e5c8;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    body{
+      background:var(--bg);color:var(--text);
+      font-family:var(--font-sans);font-size:1.0625rem;line-height:1.7;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3,p,ul,ol,blockquote,figure{margin:0}
+    ul,ol{padding:0;list-style:none}
+    img,svg{display:block;max-width:100%}
+    a{color:var(--link);text-underline-offset:.18em;text-decoration-thickness:1px}
+    a:hover{text-decoration-thickness:2px}
+    :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+    .nowrap{white-space:nowrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+    .skip{position:absolute;left:1rem;top:-4rem;z-index:50;background:var(--surface);color:var(--text);padding:.7rem 1.1rem;border-radius:.6rem;box-shadow:var(--shadow);font-weight:600}
+    .skip:focus{top:1rem}
+    .icon{width:1.5rem;height:1.5rem;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+    /* ── Layout ── */
+    .wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem}
+    .section{padding:clamp(4rem,9vw,6.5rem) 0;position:relative}
+    .alt{background:var(--bg-alt)}
+    .rule{
+      display:flex;align-items:center;justify-content:center;gap:1.1rem;text-align:center;
+      font-size:.8rem;font-weight:600;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;
+      color:var(--accent-text);margin-bottom:1.1rem;
+    }
+    .rule::before,.rule::after{content:"";height:1px;flex:1;max-width:7rem;background:linear-gradient(to var(--dir,right),transparent,currentColor);opacity:.55}
+    .rule::after{--dir:left}
+    @media (max-width:30rem){.rule:not(.left)::before,.rule:not(.left)::after{display:none}}
+    .rule.left{justify-content:flex-start;text-indent:0}
+    .rule.left::before{display:none}
+    @media (max-width:24rem){.rule{letter-spacing:.18em;text-indent:.18em;gap:.7rem}}
+    .title{
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:600;
+      font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.12;letter-spacing:-.01em;
+      text-align:center;text-wrap:balance;max-width:24ch;margin:0 auto;overflow-wrap:break-word;
+    }
+    .title-left{text-align:left;margin:0 0 1.5rem;max-width:20ch}
+    .lead{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:60ch;margin:1.25rem auto 0;text-align:center;text-wrap:pretty}
+    /* long centred paragraphs are hard to track on phones: left-align them there */
+    @media (max-width:40rem){.lead,.contact-card p{text-align:left}}
+    .section-head{margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+
+    /* ── Buttons ── */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3rem;
+      border:1px solid transparent;border-radius:999px;padding:.8rem 1.55rem;
+      font:inherit;font-size:1rem;font-weight:600;line-height:1.2;text-decoration:none;cursor:pointer;
+      transition:background-color .15s ease,border-color .15s ease,transform .15s ease,box-shadow .15s ease;
+    }
+    .btn.primary{background:var(--accent);color:var(--accent-ink);box-shadow:var(--shadow)}
+    .btn.primary:hover{background:var(--accent-hi);transform:translateY(-1px)}
+    .btn.ghost{background:color-mix(in srgb,var(--surface) 55%,transparent);color:var(--text);border-color:var(--line-strong)}
+    .btn.ghost:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+    .btn .icon{width:1.15rem;height:1.15rem;stroke-width:2.2}
+    @media (prefers-reduced-motion:reduce){.btn:hover{transform:none!important}}
+
+    /* ── Hero ── */
+    .hero{
+      position:relative;min-height:min(100svh,64rem);display:flex;flex-direction:column;overflow:hidden;
+      background:linear-gradient(180deg,var(--sky-0) 0%,var(--sky-1) 55%,var(--sky-2) 100%);
+    }
+    .hero-sky{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+    .topbar{position:relative;z-index:3;display:flex;align-items:center;gap:1rem;max-width:76rem;width:100%;margin:0 auto;padding:1rem 1.25rem}
+    .brand{display:inline-flex;align-items:center;gap:.65rem;color:var(--text);text-decoration:none;font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:650;font-size:1.3rem;letter-spacing:.005em;margin-right:auto;border-radius:999px}
+    .brand svg{width:2.4rem;height:2.4rem}
+    .nav-links{display:flex;gap:.2rem;margin:0 .25rem 0 0}
+    .nav-links a{display:inline-block;padding:.5rem .8rem;border-radius:999px;color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500}
+    .nav-links a:hover{background:color-mix(in srgb,var(--surface) 70%,transparent)}
+    @media (max-width:52rem){.nav-links{display:none}}
+    .theme-toggle{
+      width:2.75rem;height:2.75rem;display:inline-flex;align-items:center;justify-content:center;padding:0;flex:none;
+      border-radius:999px;border:1px solid var(--line-strong);background:color-mix(in srgb,var(--surface) 70%,transparent);
+      color:var(--text);cursor:pointer;box-shadow:var(--shadow);transition:background-color .15s ease;
+    }
+    .theme-toggle:hover{background:var(--surface)}
+    .theme-toggle .icon{width:1.2rem;height:1.2rem;stroke-width:2}
+    .theme-toggle .i-sun{display:none}
+    :root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+    :root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+
+    .hero-inner{
+      position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;padding:clamp(1.5rem,5vh,4rem) 1.25rem clamp(1rem,3vh,2rem);
+    }
+    .beta-pill{
+      display:inline-flex;align-items:center;gap:.55rem;padding:.4rem .95rem .4rem .8rem;border-radius:999px;
+      background:color-mix(in srgb,var(--surface) 72%,transparent);border:1px solid var(--line);
+      color:var(--text);font-size:.85rem;font-weight:500;text-decoration:none;margin-bottom:1.6rem;
+      backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    }
+    .beta-pill:hover{border-color:var(--line-strong)}
+    .beta-pill b{font-weight:600;color:var(--accent-text);letter-spacing:.12em;font-size:.72rem;text-transform:uppercase}
+    .beta-pill .dot{flex:none;width:.55rem;height:.55rem;border-radius:50%;background:var(--a6);box-shadow:0 0 0 4px color-mix(in srgb,var(--a6) 25%,transparent)}
+    @media (max-width:24rem){.beta-pill{font-size:.78rem;gap:.45rem;padding-inline:.7rem .8rem}.beta-pill b{letter-spacing:.08em}}
+    .wordmark{
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:650;
+      font-size:clamp(3.1rem,11vw,6.6rem);line-height:.98;letter-spacing:-.025em;color:var(--text);
+    }
+    .hero-tagline{
+      margin-top:1.1rem;font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-style:italic;font-weight:450;
+      font-size:clamp(1.35rem,3.4vw,2.1rem);line-height:1.25;color:var(--text);text-wrap:balance;
+    }
+    .hero-sub{margin-top:.8rem;color:var(--muted);font-size:clamp(1rem,1.8vw,1.15rem);font-weight:500;letter-spacing:.01em;text-wrap:balance}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:2rem}
+    .hero-land{
+      position:relative;z-index:1;display:block;width:100%;flex:none;
+      height:max(16rem,min(calc(100vw * 460 / 1600),max(48vh,26vw)));
+      margin-top:-1rem;
+    }
+    @media (min-width:52rem){.hero-land{margin-top:0}}
+    /* short laptop screens: tighten the text block so the buttons stay clear of the horizon */
+    @media (min-width:52rem) and (max-height:60rem){
+      .hero-inner{padding-top:.25rem;padding-bottom:1rem}
+      .beta-pill{margin-bottom:1rem}
+      .wordmark{font-size:clamp(3.1rem,10.5vh,6.6rem)}
+      .hero-actions{margin-top:1.4rem}
+    }
+
+    /* hero scene paint */
+    .h-glow-0{stop-color:var(--glow)} .h-glow-1{stop-color:var(--glow);stop-opacity:0}
+    .h-sea-0{stop-color:var(--sea-0)} .h-sea-1{stop-color:var(--sea-1)}
+    .h-path-0{stop-color:var(--path-0)} .h-path-1{stop-color:var(--path-1)}
+    .h-sun{fill:var(--sun)}
+    .h-far{fill:var(--far)}
+    .h-glint{fill:var(--glint);opacity:.75}
+    .h-head-l{fill:var(--head-l)} .h-head-r{fill:var(--head-r)}
+    .h-sand{fill:var(--sand)} .h-near{fill:var(--near)} .h-front{fill:var(--front)}
+    .h-tree{fill:var(--tree)} .h-tree-near{fill:var(--tree-near)} .h-trunk{fill:var(--trunk)}
+    .h-dots{fill:var(--dot);opacity:.95}
+    .h-cloud{fill:var(--cloud);opacity:var(--cloud-o)}
+    @media (min-aspect-ratio:2/1){.h-cloud-low{display:none}} /* ultrawide: they would sink behind the hills */
+    .h-stars{fill:#f1e5c8;opacity:var(--star-o)}
+    .h-sparkles{fill:var(--spark);opacity:.8}
+    .h-birds{fill:none;stroke:var(--bird);stroke-width:2.4;stroke-linecap:round;opacity:.45}
+    .h-lh-body{fill:var(--lh-body)} .h-lh-band{fill:var(--lh-band)} .h-lh-roof{fill:var(--lh-roof)} .h-lh-lamp{fill:var(--lh-lamp)}
+    .h-beam{fill:url(#h-beam-g);opacity:var(--beam-o)}
+    .h-beam-0{stop-color:var(--lh-lamp);stop-opacity:.8} .h-beam-1{stop-color:var(--lh-lamp);stop-opacity:0}
+    .h-stop-disc{stroke:var(--stop-ring)}
+    .h-stop-glow{opacity:.28}
+    .h-stop-shadow{fill:rgba(20,33,58,.22)}
+    .h-stop-shine{fill:#fff;opacity:.55}
+    .h-a1 .h-stop-disc,.h-a1 .h-stop-glow{fill:var(--a1)}
+    .h-a2 .h-stop-disc,.h-a2 .h-stop-glow{fill:var(--a2)}
+    .h-a3 .h-stop-disc,.h-a3 .h-stop-glow{fill:var(--a3)}
+    .h-a4 .h-stop-disc,.h-a4 .h-stop-glow{fill:var(--a4)}
+    .h-a5 .h-stop-disc,.h-a5 .h-stop-glow{fill:var(--a5)}
+    .h-a6 .h-stop-disc,.h-a6 .h-stop-glow{fill:var(--a6)}
+    @media (prefers-reduced-motion:no-preference){
+      .h-stop{transform-box:fill-box;transform-origin:50% 80%;animation:stop-in .7s cubic-bezier(.2,.9,.3,1.2) both;animation-delay:calc(.35s + var(--i) * .16s)}
+      .h-dots{animation:fade-in 1.2s ease-out both .1s}
+      @keyframes stop-in{from{opacity:0;transform:translateY(14%) scale(.4)}to{opacity:1;transform:none}}
+      @keyframes fade-in{from{opacity:0}to{opacity:.95}}
+    }
+
+    /* ── Tagline ── */
+    .tagline{padding:clamp(3.5rem,8vw,5.5rem) 0;text-align:center}
+    .tagline p{
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:450;
+      font-size:clamp(1.6rem,3.9vw,2.5rem);line-height:1.38;max-width:30ch;margin:0 auto;text-wrap:balance;
+    }
+    .flourish{margin-top:1.6rem;color:var(--accent-text);letter-spacing:.9em;text-indent:.9em;font-size:.8rem}
+
+    /* ── About ── */
+    .about-grid{display:grid;gap:clamp(2rem,5vw,4rem);align-items:center}
+    @media (min-width:56rem){.about-grid{grid-template-columns:1.15fr .85fr}}
+    .about-copy p{max-width:62ch}
+    .about-copy p + p{margin-top:1.1rem}
+    .about-copy .big{font-size:clamp(1.15rem,1.9vw,1.3rem);line-height:1.6;color:var(--text)}
+    .about-copy p:not(.big):not(.rule){color:var(--muted)}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+    .chip{display:inline-flex;align-items:center;padding:.35rem .85rem;border-radius:999px;font-size:.88rem;font-weight:500;background:var(--surface);border:1px solid var(--line);color:var(--text)}
+    .about-card{
+      position:relative;border-radius:var(--r-lg);padding:clamp(2rem,4vw,2.75rem);text-align:center;overflow:hidden;
+      background:linear-gradient(160deg,var(--surface),var(--surface-2));border:1px solid var(--line);box-shadow:var(--shadow);
+    }
+    .about-card svg.loop{width:min(15rem,70%);height:auto;margin:0 auto 1.4rem}
+    .about-card blockquote{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:500;font-size:clamp(1.3rem,2.4vw,1.6rem);line-height:1.35;text-wrap:balance}
+    .loop-a{stroke:var(--a2)} .loop-b{stroke:var(--a1)}
+    .loop-dot{fill:var(--stop-ring);stroke-width:3}
+
+    /* ── Mission ── */
+    .mission-statement{
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:550;
+      font-size:clamp(1.8rem,4.2vw,2.8rem);line-height:1.18;text-align:center;max-width:26ch;margin:0 auto;text-wrap:balance;
+    }
+    .mission-statement em{font-style:normal;color:var(--accent-text)}
+    .bridge{display:grid;gap:2.5rem;align-items:center;margin-top:clamp(2.5rem,6vw,4rem)}
+    @media (min-width:56rem){.bridge{grid-template-columns:1fr 1fr}}
+    .venn{position:relative;width:min(100%,27rem);aspect-ratio:1/0.94;margin:0 auto;container-type:inline-size}
+    .venn .c{
+      position:absolute;width:58%;aspect-ratio:1;border-radius:50%;display:flex;padding:9%;
+      font-weight:600;font-size:max(.8rem,3.7cqi);line-height:1.25;color:var(--text);
+      border:1.5px solid color-mix(in srgb,var(--cc) 70%,transparent);
+      background:color-mix(in srgb,var(--cc) 17%,transparent);
+    }
+    .venn .c1{--cc:var(--a2);left:0;top:0;align-items:flex-start;justify-content:flex-start;padding-top:22%;padding-left:13%;text-align:left}
+    .venn .c2{--cc:var(--a4);right:0;top:0;align-items:flex-start;justify-content:flex-end;padding-top:22%;padding-right:13%;text-align:right}
+    .venn .c3{--cc:var(--a1);left:21%;bottom:0;align-items:flex-end;justify-content:center;padding-bottom:15%;text-align:center}
+    .venn .core{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-38%);
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:650;font-size:max(.9rem,4.4cqi);
+      background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:.35em .9em;box-shadow:var(--shadow);white-space:nowrap
+    }
+    .bridge-copy p{color:var(--muted);max-width:52ch}
+    .bridge-copy p + p{margin-top:1rem}
+    .bridge-copy .big{color:var(--text);font-size:clamp(1.1rem,1.8vw,1.25rem);line-height:1.6}
+    .disciplines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1.6rem}
+    .discipline{display:flex;align-items:center;gap:.7rem;padding:.8rem .95rem;border-radius:var(--r-sm);background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:.95rem;line-height:1.3}
+    .discipline .icon{color:var(--accent-text)}
+    @media (max-width:26rem){.disciplines{grid-template-columns:1fr}}
+    .goal{
+      margin:clamp(2.5rem,5vw,3.5rem) auto 0;max-width:46rem;text-align:center;padding:1.6rem 1.75rem;border-radius:var(--r-md);
+      border:1px dashed color-mix(in srgb,var(--accent-text) 55%,transparent);background:color-mix(in srgb,var(--accent) 7%,transparent)
+    }
+    .goal p{font-size:clamp(1.1rem,2vw,1.3rem);line-height:1.5}
+    .goal strong{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:650;color:var(--accent-text)}
+
+    /* ── Six areas ── */
+    .areas{display:grid;gap:1.1rem;counter-reset:area}
+    @media (min-width:40rem){.areas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (min-width:64rem){.areas{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .area{
+      position:relative;display:flex;flex-direction:column;padding:1.6rem 1.5rem 1.4rem;border-radius:var(--r-md);
+      background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;
+    }
+    .area::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--ac)}
+    .area-top{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
+    .area-icon{
+      width:3rem;height:3rem;border-radius:var(--r-sm);display:grid;place-items:center;flex:none;
+      background:color-mix(in srgb,var(--ac) 16%,transparent);color:var(--text);border:1.5px solid color-mix(in srgb,var(--ac) 55%,transparent)
+    }
+    .area-num{font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+    .area h3{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:1.3rem;line-height:1.22;margin-bottom:.6rem}
+    .area p{color:var(--muted);font-size:.97rem;line-height:1.65}
+    .area-games{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin-top:auto;padding-top:1.1rem}
+    .area-games .lbl{flex-basis:100%;margin:0 0 .1rem;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .tag{display:inline-flex;align-items:center;gap:.35rem;padding:.22rem .65rem;border-radius:999px;font-size:.82rem;font-weight:500;background:var(--surface-2);border:1px solid var(--line);color:var(--text);text-decoration:none;white-space:nowrap}
+    /* links are buttons, not labels (as on sofmon.com) */
+    a.tag{min-height:2rem;padding-inline:.8rem;background:transparent;border-color:var(--accent-text);color:var(--accent-text);font-weight:600;transition:background-color .15s ease,color .15s ease}
+    a.tag:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+    a.tag .icon{width:.85rem;height:.85rem;stroke-width:2.4}
+    .tag.soon{border-style:dashed;color:var(--muted);background:transparent}
+    .a1{--ac:var(--a1)} .a2{--ac:var(--a2)} .a3{--ac:var(--a3)} .a4{--ac:var(--a4)} .a5{--ac:var(--a5)} .a6{--ac:var(--a6)}
+
+    /* ── Games ── */
+    .game-panel{
+      display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(2rem,5vw,3.5rem);align-items:center;
+      padding:clamp(1.75rem,4.5vw,3rem);border-radius:var(--r-lg);border:1px solid var(--line);
+      background:linear-gradient(160deg,var(--surface),var(--surface-2));box-shadow:var(--shadow);
+    }
+    .game-panel + .game-panel{margin-top:1.5rem}
+    .game-panel.reversed{grid-template-columns:auto minmax(0,1fr)}
+    @media (max-width:47.9rem){
+      .game-panel,.game-panel.reversed{grid-template-columns:minmax(0,1fr)}
+      .game-panel .game-shot{margin:0 auto}
+      .game-panel.reversed .game-shot{order:2}
+    }
+    .game-head{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem}
+    .game-panel h3{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:650;font-size:clamp(1.8rem,3.6vw,2.4rem);line-height:1.1;letter-spacing:-.01em}
+    .badge-beta{
+      display:inline-flex;align-items:center;padding:.2rem .7rem;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--accent-ink);background:var(--accent);
+    }
+    .game-panel .sub{color:var(--accent-text);font-size:.85rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:.55rem 0 1rem}
+    .game-panel .desc{color:var(--muted);max-width:52ch}
+    .game-points{margin:1.25rem 0 1.6rem;display:grid;gap:.45rem}
+    .game-points li{position:relative;padding-left:1.4rem;font-size:.97rem}
+    .game-points li::before{content:"✦";content:"✦" / "";position:absolute;left:0;top:.2em;color:var(--accent-text);font-size:.75rem;line-height:1.6}
+    .game-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.1rem}
+    .game-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.1rem}
+    .game-actions .more{font-size:.92rem}
+    .game-shot{
+      width:min(15.5rem,68vw);border-radius:1.7rem;overflow:hidden;background:var(--surface);
+      border:6px solid color-mix(in srgb,var(--text) 88%,transparent);box-shadow:var(--shadow-lg);
+    }
+    .game-shot img{width:100%;height:auto}
+    .beta-note{
+      display:grid;gap:1rem;align-items:center;margin-top:1.5rem;padding:1.4rem 1.6rem;border-radius:var(--r-md);
+      background:color-mix(in srgb,var(--a2) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--a2) 35%,transparent);
+    }
+    @media (min-width:48rem){.beta-note{grid-template-columns:auto 1fr auto}}
+    .beta-note .icon{width:2rem;height:2rem;color:var(--a2)}
+    .beta-note h3{font-size:1.02rem;font-weight:600;margin-bottom:.2rem}
+    .beta-note p{color:var(--muted);font-size:.95rem;max-width:56ch}
+
+    /* ── Different minds ── */
+    .minds-quote{
+      max-width:44rem;margin:0 auto clamp(2.5rem,5vw,3.5rem);text-align:center;
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:450;
+      font-size:clamp(1.35rem,2.8vw,1.85rem);line-height:1.4;text-wrap:balance
+    }
+    .principles{display:grid;gap:1rem}
+    @media (min-width:40rem){.principles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (min-width:64rem){.principles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .principle{display:flex;gap:1rem;padding:1.3rem 1.35rem;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--line)}
+    .principle .icon{width:1.7rem;height:1.7rem;color:var(--accent-text);margin-top:.15rem}
+    .principle h3{font-size:1.02rem;font-weight:600;line-height:1.35;margin-bottom:.25rem}
+    .principle p{color:var(--muted);font-size:.95rem;line-height:1.6}
+    .principles-note{margin-top:1.25rem;text-align:center;color:var(--muted);font-size:.9rem}
+
+    /* ── Progress ── */
+    .audiences{display:grid;gap:1rem}
+    @media (min-width:48rem){.audiences{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .audience{padding:1.9rem 1.5rem;border-radius:var(--r-md);background:linear-gradient(to bottom,var(--surface),var(--surface-2));border:1px solid var(--line);text-align:center}
+    .audience h3{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:1.3rem;line-height:1.25;margin-bottom:.35rem}
+    .audience .where{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text);margin-bottom:.7rem}
+    .audience p{color:var(--muted);font-size:.97rem}
+    .roadmap{
+      display:grid;gap:1.5rem;margin-top:1.5rem;padding:clamp(1.6rem,4vw,2.4rem);border-radius:var(--r-lg);
+      background:var(--band);color:var(--band-text);
+    }
+    @media (min-width:56rem){.roadmap{grid-template-columns:1fr 1.25fr;align-items:center}}
+    .roadmap .rule{color:var(--band-accent);margin-bottom:.6rem}
+    .roadmap h3{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:clamp(1.4rem,2.6vw,1.8rem);line-height:1.2}
+    .roadmap p{color:var(--band-muted);margin-top:.7rem;font-size:.97rem}
+    .roadmap ol{display:grid;gap:.7rem;list-style:none;padding:0;counter-reset:rm}
+    .roadmap li{display:flex;gap:.9rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:var(--r-sm);background:rgba(241,229,200,.06);border:1px solid rgba(241,229,200,.14)}
+    .roadmap li::before{counter-increment:rm;content:counter(rm);flex:none;width:1.8rem;height:1.8rem;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:600;color:#231607;background:var(--band-accent)}
+    .roadmap li b{display:block;font-weight:600;color:var(--band-text)}
+    .roadmap li span{color:var(--band-muted);font-size:.93rem}
+    .roadmap li em{display:inline-block;margin-top:.35rem;font-style:normal;font-size:.8rem;font-weight:600;color:var(--band-accent)}
+    .values{margin-top:clamp(2.5rem,5vw,3.5rem);text-align:center}
+    .values p{color:var(--muted);text-wrap:balance}
+    .values ul{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1rem}
+    .values li{padding:.5rem 1.1rem;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:550;font-size:1.08rem}
+    .values li:last-child{background:color-mix(in srgb,var(--accent) 16%,var(--surface));border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+
+    /* ── Vision band ── */
+    .vision{
+      color:var(--band-text);text-align:center;overflow:hidden;
+      background:
+        radial-gradient(70% 90% at 50% 120%,rgba(224,123,56,.30),transparent 62%),
+        radial-gradient(60% 60% at 50% -10%,rgba(63,163,159,.16),transparent 60%),
+        linear-gradient(180deg,var(--band) 0%,var(--band-2) 100%);
+    }
+    .vision::before{
+      content:"";position:absolute;inset:0;pointer-events:none;opacity:.7;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%,rgba(241,229,200,.7) 50%,transparent 51%),
+        radial-gradient(1px 1px at 78% 12%,rgba(241,229,200,.55) 50%,transparent 51%),
+        radial-gradient(1.5px 1.5px at 88% 46%,rgba(241,229,200,.45) 50%,transparent 51%),
+        radial-gradient(1px 1px at 30% 70%,rgba(241,229,200,.35) 50%,transparent 51%),
+        radial-gradient(1.5px 1.5px at 62% 30%,rgba(241,229,200,.4) 50%,transparent 51%),
+        radial-gradient(1px 1px at 6% 82%,rgba(241,229,200,.4) 50%,transparent 51%);
+      background-size:900px 600px;
+    }
+    .vision .wrap{position:relative}
+    .vision .rule{color:var(--band-accent)}
+    .vision blockquote{
+      font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:500;
+      font-size:clamp(1.75rem,4.4vw,3rem);line-height:1.2;max-width:24ch;margin:0 auto;text-wrap:balance
+    }
+    .vision .lead{color:var(--band-muted)}
+    .vision .closing{margin-top:2.2rem;font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.45rem);color:var(--band-accent);text-wrap:balance}
+
+    /* ── Privacy ── */
+    .safe{display:grid;gap:1rem}
+    @media (min-width:40rem){.safe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (min-width:64rem){.safe{grid-template-columns:repeat(4,minmax(0,1fr))}}
+    .safe li{padding:1.4rem 1.3rem;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--line);text-align:center}
+    .safe .icon{width:2rem;height:2rem;margin:0 auto .8rem;color:var(--a2)}
+    .safe b{display:block;font-weight:600;margin-bottom:.25rem}
+    .safe span{color:var(--muted);font-size:.93rem;line-height:1.55;display:block}
+    .disclaimer{
+      max-width:38rem;margin:1.75rem auto 0;padding:1.1rem 1.35rem;border-radius:var(--r-md);border-left:4px solid var(--accent-text);
+      background:color-mix(in srgb,var(--accent) 6%,var(--surface));color:var(--text);font-size:.95rem
+    }
+    .privacy-link{text-align:center;margin-top:1.4rem}
+
+    /* ── Harbor & contact ── */
+    .harbor{text-align:center}
+    .harbor .lead a{font-weight:600}
+    .contact-card{
+      max-width:44rem;margin:clamp(2.5rem,5vw,3.25rem) auto 0;padding:clamp(1.75rem,4vw,2.5rem);border-radius:var(--r-lg);text-align:center;
+      background:
+        radial-gradient(80% 120% at 50% 130%,color-mix(in srgb,var(--accent) 26%,transparent),transparent 65%),
+        var(--surface);
+      border:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    .contact-card h3{font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:clamp(1.45rem,2.8vw,1.85rem);line-height:1.2}
+    .contact-card p{color:var(--muted);margin:.7rem auto 1.5rem;max-width:44ch;text-wrap:pretty}
+    @media (max-width:23rem){
+      .contact-card{padding:1.5rem 1rem}
+      .contact-card .btn{padding-inline:1.1rem;font-size:.95rem}
+      .game-panel{padding:1.25rem 1rem}
+    }
+
+    /* ── Footer ── */
+    .site-footer{background:var(--band);color:var(--band-text);padding:3rem 1.5rem 2.5rem;text-align:center}
+    .site-footer .brand{margin:0 auto;color:var(--band-text);font-size:1.45rem}
+    .site-footer .motto{margin-top:.9rem;font-family:var(--font-display);font-variation-settings:"SOFT" 100;font-style:italic;font-size:1.15rem;color:var(--band-text);text-wrap:balance}
+    .site-footer .ppd{margin-top:.35rem;color:var(--band-accent);letter-spacing:.32em;text-indent:.32em;font-size:.78rem;font-weight:600;text-transform:uppercase}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem 1.3rem;margin-top:1.75rem;font-size:.92rem}
+    .footer-links a{color:var(--band-text);text-decoration-color:rgba(241,229,200,.35)}
+    .footer-links a:hover{color:var(--band-accent)}
+    .legal{margin-top:1.4rem;color:var(--band-muted);font-size:.84rem;line-height:1.8}
+    .site-footer :focus-visible{outline-color:var(--band-accent)}
+    .vision :focus-visible,.roadmap :focus-visible{outline-color:var(--band-accent)}
+
+    @media print{
+      .hero-land,.hero-sky,.theme-toggle,.nav-links{display:none}
+      .hero{min-height:0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Icon sprite: hand-drawn 24px line icons, coloured with currentColor -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="emblem" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#14213a"/>
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#f2b85e" stroke-opacity=".55" stroke-width="1.5"/>
+        <path d="M32 36 C27.5 29.5 17 28.5 17 36 C17 43.5 27.5 42.5 32 36" fill="none" stroke="#3fa39f" stroke-width="5" stroke-linecap="round"/>
+        <path d="M32 36 C36.5 29.5 47 28.5 47 36 C47 43.5 36.5 42.5 32 36" fill="none" stroke="#ef9a4c" stroke-width="5" stroke-linecap="round"/>
+        <path d="M32 11.5 L33.9 17.1 L39.5 19 L33.9 20.9 L32 26.5 L30.1 20.9 L24.5 19 L30.1 17.1 Z" fill="#f2b85e"/>
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.3A8.5 8.5 0 1 1 9.7 3.5a6.8 6.8 0 0 0 10.8 10.8z"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol>
+      <!-- six areas -->
+      <symbol id="i-motor" viewBox="0 0 24 24"><path d="M14.6 4.4a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L10 19l-5 1 1-5z"/><path d="m13 6 5 5"/><path d="M3 22h3" stroke-dasharray="1 2.4"/></symbol>
+      <symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></symbol>
+      <symbol id="i-sensory" viewBox="0 0 24 24"><path d="M3 9.5c1.6-1.6 3.4-1.6 5 0s3.4 1.6 5 0 3.4-1.6 5 0 2.4 1.2 3 .6"/><path d="M3 14.5c1.6-1.6 3.4-1.6 5 0s3.4 1.6 5 0 3.4-1.6 5 0 2.4 1.2 3 .6"/><path d="M8 19.5c1.3.9 2.7.9 4 0s2.7-.9 4 0"/><path d="M8 4.5c1.3.9 2.7.9 4 0s2.7-.9 4 0"/></symbol>
+      <symbol id="i-think" viewBox="0 0 24 24"><circle cx="7.5" cy="7.5" r="3.8"/><rect x="13.2" y="3.7" width="7.3" height="7.3" rx="1.4"/><path d="M7.5 13.5 11.6 20.5H3.4z"/><path d="m14 17.2 2 2 4-4.2"/></symbol>
+      <symbol id="i-learn" viewBox="0 0 24 24"><path d="M3 5.6c3-1.3 6-1 9 1 3-2 6-2.3 9-1v13.2c-3-1.3-6-1-9 1-3-2-6-2.3-9-1z"/><path d="M12 6.6v13.2"/><path d="M6 10h3M6 13.2h3M15 10h3"/></symbol>
+      <symbol id="i-everyday" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17.5" rx="2.6"/><path d="m7.8 9 1.6 1.6L12.2 8"/><path d="m7.8 15 1.6 1.6 2.8-2.6"/><path d="M14.6 9.6h2.6M14.6 15.6h2.6"/></symbol>
+      <!-- disciplines -->
+      <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12.5V5.6a1.6 1.6 0 0 1 3.2 0V11"/><path d="M11.2 10V4.2a1.6 1.6 0 0 1 3.2 0V11"/><path d="M14.4 10.2V6a1.6 1.6 0 0 1 3.2 0v8a7 7 0 0 1-7 7h-.6a6.4 6.4 0 0 1-5.3-2.8L3 15.1a1.6 1.6 0 0 1 2.5-2l2.5 2.4"/></symbol>
+      <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12C12 7.6 9 5 4 5c0 4.4 3 7 8 7z"/><path d="M12 14.5c0-3.8 2.6-6 7.5-6 0 3.8-2.6 6-7.5 6z"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9.2 18h5.6M10.2 21h3.6"/><path d="M12 3a6.2 6.2 0 0 0-3.8 11.1c.6.5 1 1.2 1 2V16h5.6v.1c0-.8.4-1.5 1-2A6.2 6.2 0 0 0 12 3z"/></symbol>
+      <symbol id="i-game" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.3 10.6v3.8M5.4 12.5h3.8"/><circle cx="15.6" cy="11.2" r=".9" fill="currentColor"/><circle cx="17.8" cy="13.8" r=".9" fill="currentColor"/></symbol>
+      <!-- principles -->
+      <symbol id="i-calm" viewBox="0 0 24 24"><path d="M4 15c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M2.5 19h19"/><path d="M12 3v1.5M5.6 5.6l1 1M18.4 5.6l-1 1"/></symbol>
+      <symbol id="i-ear" viewBox="0 0 24 24"><path d="M11 4.5l-5 4H3v7h3l5 4z"/><path d="M15.5 9a4.4 4.4 0 0 1 0 6M18.4 6.3a8.2 8.2 0 0 1 0 11.4"/></symbol>
+      <symbol id="i-retry" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v4.5h-4.5"/><path d="m9 12.2 2.2 2.2L15.4 10"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.2 2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.6l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13.5 15-14-0.5 10-6 15-14 15"/><path d="M5 19c3-4 6-7 10-9.5"/></symbol>
+      <!-- privacy -->
+      <symbol id="i-noaccount" viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.8"/><path d="M3.5 20c.6-3.6 3.2-5.8 6.5-5.8 1.5 0 2.8.4 3.9 1.2"/><path d="m16 15.5 5 5M21 15.5l-5 5"/></symbol>
+      <symbol id="i-noads" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="m5.8 5.8 12.4 12.4"/></symbol>
+      <symbol id="i-notrack" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5c1.6 0 3 .4 4.3 1M21.5 12s-3.5 6.5-9.5 6.5c-1.6 0-3-.4-4.3-1"/><path d="M9.6 14.4A3.3 3.3 0 0 1 14.4 9.6"/><path d="m3.5 3.5 17 17"/></symbol>
+      <symbol id="i-device" viewBox="0 0 24 24"><rect x="5.5" y="2.8" width="13" height="18.4" rx="2.6"/><path d="M10.5 17.8h3"/><path d="M12 7.2v4.2M10 9.6l2 2 2-2"/></symbol>
+      <symbol id="i-beta" viewBox="0 0 24 24"><path d="M9 3h6M10 3v5.2L4.6 18a2 2 0 0 0 1.8 3h11.2a2 2 0 0 0 1.8-3L14 8.2V3"/><path d="M7.5 14.5h9"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="hero" id="top">
+    <!-- hero-sky:start -->
+    <svg class="hero-sky" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g class="h-stars"><circle cx="116" cy="438" r="0.90"/><circle cx="338" cy="426" r="1.35"/><circle cx="1440" cy="331" r="1.80"/><circle cx="1450" cy="167" r="1.35"/><circle cx="246" cy="337" r="2.25"/><circle cx="100" cy="405" r="0.90"/><circle cx="60" cy="413" r="0.90"/><circle cx="1306" cy="112" r="1.35"/><circle cx="1320" cy="414" r="1.80"/><circle cx="1432" cy="164" r="1.80"/><circle cx="1238" cy="226" r="2.25"/><circle cx="122" cy="170" r="1.35"/><circle cx="158" cy="287" r="2.25"/><circle cx="316" cy="207" r="0.90"/><circle cx="232" cy="123" r="1.80"/><circle cx="1522" cy="312" r="1.35"/><circle cx="1344" cy="138" r="1.80"/><circle cx="44" cy="227" r="0.90"/><circle cx="1432" cy="170" r="1.80"/><circle cx="240" cy="163" r="1.80"/><circle cx="1454" cy="112" r="2.25"/><circle cx="220" cy="193" r="0.90"/><circle cx="314" cy="302" r="1.35"/><circle cx="8" cy="360" r="1.80"/><circle cx="1312" cy="267" r="1.80"/><circle cx="1310" cy="368" r="2.25"/><circle cx="1322" cy="423" r="1.35"/></g>
+      <g class="h-sparkles"><path d="M1290 387.0 L1293.38 396.62 L1303.0 400 L1293.38 403.38 L1290 413.0 L1286.62 403.38 L1277.0 400 L1286.62 396.62 Z"/><path d="M330 215.0 L332.6 222.4 L340.0 225 L332.6 227.6 L330 235.0 L327.4 227.6 L320.0 225 L327.4 222.4 Z"/><path d="M1480 322.0 L1482.08 327.92 L1488.0 330 L1482.08 332.08 L1480 338.0 L1477.92 332.08 L1472.0 330 L1477.92 327.92 Z"/></g>
+      <g class="h-cloud"><ellipse cx="240" cy="330" rx="88" ry="22"/><circle cx="208" cy="315" r="28"/><circle cx="250" cy="302" r="35"/><circle cx="288" cy="320" r="22"/></g><g class="h-cloud"><ellipse cx="1340" cy="250" rx="70" ry="18"/><circle cx="1314" cy="238" r="22"/><circle cx="1348" cy="228" r="28"/><circle cx="1378" cy="242" r="18"/></g><g class="h-cloud h-cloud-low"><ellipse cx="390" cy="470" rx="52" ry="14"/><circle cx="370" cy="461" r="16"/><circle cx="396" cy="454" r="21"/><circle cx="418" cy="464" r="14"/></g><g class="h-cloud h-cloud-low"><ellipse cx="1320" cy="440" rx="49" ry="13"/><circle cx="1302" cy="432" r="15"/><circle cx="1326" cy="425" r="20"/><circle cx="1347" cy="434" r="13"/></g>
+    </svg>
+    <!-- hero-sky:end -->
+    <nav class="topbar" aria-label="Main">
+      <a class="brand" href="#top"><svg aria-hidden="true"><use href="#emblem"/></svg>Monkotorix</a>
+      <ul class="nav-links">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Dark theme" aria-pressed="false">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </nav>
+
+    <div class="hero-inner">
+      <a class="beta-pill" href="#games"><span class="dot" aria-hidden="true"></span><b>Beta</b> Two free learning games to play now</a>
+      <h1 class="wordmark">Monkotorix</h1>
+      <p class="hero-tagline">Different Minds. Endless&nbsp;Possibilities.</p>
+      <p class="hero-sub">Play with Purpose. Grow with Confidence.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#games">Play the beta games<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost" href="#mission">Our approach</a>
+      </div>
+    </div>
+
+    <!-- hero-land:start -->
+    <svg class="hero-land" viewBox="0 440 1600 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="h-glow" cx=".5" cy=".5" r=".5">
+          <stop class="h-glow-0" offset="0"/><stop class="h-glow-1" offset=".72"/>
+        </radialGradient>
+        <linearGradient id="h-sea" x1="0" y1="0" x2="0" y2="1">
+          <stop class="h-sea-0" offset="0"/><stop class="h-sea-1" offset="1"/>
+        </linearGradient>
+        <radialGradient id="h-beam-g" cx=".5" cy=".5" r=".5">
+          <stop class="h-beam-0" offset="0"/><stop class="h-beam-1" offset="1"/>
+        </radialGradient>
+        <linearGradient id="h-path" x1="0" y1="0" x2="0" y2="1">
+          <stop class="h-path-0" offset="0"/><stop class="h-path-1" offset="1"/>
+        </linearGradient>
+      </defs>
+      <ellipse cx="880" cy="556" rx="520" ry="116" fill="url(#h-glow)"/>
+      <circle class="h-sun" cx="880" cy="566" r="74"/>
+      <g class="h-birds"><path d="M968 522 q10 -9 20 0 q10 -9 20 0"/><path d="M1016 500 q7 -6 14 0 q7 -6 14 0"/><path d="M700 508 q8 -7 16 0 q8 -7 16 0"/></g>
+      <path class="h-far" d="M-40.0 600.0 C-18.3 589.7 41.7 553.0 90.0 538.0 C138.3 523.0 195.0 507.7 250.0 510.0 C305.0 512.3 368.3 539.0 420.0 552.0 C471.7 565.0 513.3 579.7 560.0 588.0 C606.7 596.3 633.3 599.0 700.0 602.0 C766.7 605.0 890.0 609.7 960.0 606.0 C1030.0 602.3 1070.0 593.3 1120.0 580.0 C1170.0 566.7 1210.0 540.7 1260.0 526.0 C1310.0 511.3 1370.0 493.3 1420.0 492.0 C1470.0 490.7 1520.0 506.7 1560.0 518.0 C1600.0 529.3 1643.3 553.0 1660.0 560.0 L1660 640 L-40 640 Z"/>
+      <rect y="548" width="1600" height="352" fill="url(#h-sea)"/>
+      <g class="h-glint">
+        <rect x="790" y="586" width="180" height="5" rx="2.5"/>
+        <rect x="820" y="604" width="120" height="4" rx="2"/>
+        <rect x="770" y="622" width="150" height="4" rx="2"/>
+        <rect x="850" y="640" width="90" height="3" rx="1.5"/>
+        <rect x="810" y="660" width="60" height="3" rx="1.5"/>
+      </g>
+      <path class="h-head h-head-l" d="M-40.0 520.0 C-13.3 521.3 63.3 521.3 120.0 528.0 C176.7 534.7 241.7 547.0 300.0 560.0 C358.3 573.0 421.7 588.7 470.0 606.0 C518.3 623.3 558.3 644.0 590.0 664.0 C621.7 684.0 641.7 703.3 660.0 726.0 C678.3 748.7 693.3 787.7 700.0 800.0 L700 960 L-40 960 Z"/>
+      <path class="h-head h-head-r" d="M1660.0 500.0 C1633.3 502.3 1555.0 505.0 1500.0 514.0 C1445.0 523.0 1385.0 539.7 1330.0 554.0 C1275.0 568.3 1218.3 584.3 1170.0 600.0 C1121.7 615.7 1075.0 629.3 1040.0 648.0 C1005.0 666.7 978.3 686.7 960.0 712.0 C941.7 737.3 935.0 785.3 930.0 800.0 L930 960 L1660 960 Z"/>
+      <g class="h-lighthouse"><circle class="h-beam" cx="1205" cy="534" r="40"/><path class="h-lh-body" d="M1192 592 L1197 540 L1213 540 L1218 592 Z"/><path class="h-lh-band" d="M1193.4 576 L1194.6 564 L1215.4 564 L1216.6 576 Z"/><path class="h-lh-band" d="M1195.6 552 L1196.4 544 L1213.6 544 L1214.4 552 Z"/><rect class="h-lh-lamp" x="1199" y="528" width="12" height="12" rx="2"/><path class="h-lh-roof" d="M1196 528 L1205 518 L1214 528 Z"/></g>
+      <path class="h-sand" d="M520.0 716.0 C520.0 711.0 593.3 703.8 640.0 700.0 C686.7 696.2 746.7 693.3 800.0 693.0 C853.3 692.7 915.0 694.2 960.0 698.0 C1005.0 701.8 1070.0 711.0 1070.0 716.0 C1070.0 721.0 1005.0 726.7 960.0 728.0 C915.0 729.3 853.3 723.7 800.0 724.0 C746.7 724.3 686.7 731.3 640.0 730.0 C593.3 728.7 520.0 721.0 520.0 716.0 Z"/>
+      <path class="h-near" d="M-40.0 770.0 C-6.7 765.3 90.0 747.7 160.0 742.0 C230.0 736.3 313.3 740.0 380.0 736.0 C446.7 732.0 503.3 724.0 560.0 718.0 C616.7 712.0 670.0 703.7 720.0 700.0 C770.0 696.3 811.7 694.0 860.0 696.0 C908.3 698.0 953.3 705.0 1010.0 712.0 C1066.7 719.0 1135.0 732.7 1200.0 738.0 C1265.0 743.3 1323.3 746.3 1400.0 744.0 C1476.7 741.7 1616.7 727.3 1660.0 724.0 L1660 960 L-40 960 Z"/>
+      <path class="h-front" d="M-40.0 830.0 C-10.0 826.3 78.3 809.3 140.0 808.0 C201.7 806.7 266.7 812.0 330.0 822.0 C393.3 832.0 468.3 848.3 520.0 868.0 C571.7 887.7 620.0 928.0 640.0 940.0 L-40 960 Z"/>
+      <path class="h-front" d="M1660.0 812.0 C1630.0 810.0 1541.7 798.3 1480.0 800.0 C1418.3 801.7 1353.3 810.0 1290.0 822.0 C1226.7 834.0 1150.0 852.3 1100.0 872.0 C1050.0 891.7 1008.3 928.7 990.0 940.0 L1660 960 Z"/>
+      <g class="h-tree"><rect class="h-trunk" x="146.2" y="533.6" width="7.7" height="25.6" rx="3.2"/><circle cx="150.0" cy="517.6" r="20.8"/><circle cx="137.2" cy="528.8" r="14.4"/><circle cx="162.8" cy="530.4" r="15.2"/></g><g class="h-tree"><rect class="h-trunk" x="202.2" y="547.4" width="5.5" height="18.4" rx="2.3"/><circle cx="205.0" cy="535.9" r="14.9"/><circle cx="195.8" cy="544.0" r="10.3"/><circle cx="214.2" cy="545.1" r="10.9"/></g><g class="h-tree"><rect class="h-trunk" x="326.8" y="572.6" width="6.5" height="21.6" rx="2.7"/><circle cx="330.0" cy="559.1" r="17.6"/><circle cx="319.2" cy="568.5" r="12.2"/><circle cx="340.8" cy="569.9" r="12.8"/></g><g class="h-tree"><rect class="h-trunk" x="53.6" y="528.0" width="4.8" height="16.0" rx="2.0"/><circle cx="56.0" cy="518.0" r="13.0"/><circle cx="48.0" cy="525.0" r="9.0"/><circle cx="64.0" cy="526.0" r="9.5"/></g><g class="h-tree"><rect class="h-trunk" x="1366.4" y="540.0" width="7.2" height="24.0" rx="3.0"/><circle cx="1370.0" cy="525.0" r="19.5"/><circle cx="1358.0" cy="535.5" r="13.5"/><circle cx="1382.0" cy="537.0" r="14.2"/></g><g class="h-tree"><rect class="h-trunk" x="1447.4" y="525.6" width="5.3" height="17.6" rx="2.2"/><circle cx="1450.0" cy="514.6" r="14.3"/><circle cx="1441.2" cy="522.3" r="9.9"/><circle cx="1458.8" cy="523.4" r="10.5"/></g><g class="h-tree"><rect class="h-trunk" x="1516.8" y="516.6" width="6.5" height="21.6" rx="2.7"/><circle cx="1520.0" cy="503.1" r="17.6"/><circle cx="1509.2" cy="512.5" r="12.2"/><circle cx="1530.8" cy="513.9" r="12.8"/></g><g class="h-tree h-tree-near"><rect class="h-trunk" x="244.2" y="802.4" width="11.5" height="38.4" rx="4.8"/><circle cx="250.0" cy="778.4" r="31.2"/><circle cx="230.8" cy="795.2" r="21.6"/><circle cx="269.2" cy="797.6" r="22.8"/></g><g class="h-tree h-tree-near"><rect class="h-trunk" x="325.9" y="819.2" width="8.2" height="27.2" rx="3.4"/><circle cx="330.0" cy="802.2" r="22.1"/><circle cx="316.4" cy="814.1" r="15.3"/><circle cx="343.6" cy="815.8" r="16.1"/></g><g class="h-tree h-tree-near"><rect class="h-trunk" x="1374.7" y="799.2" width="10.6" height="35.2" rx="4.4"/><circle cx="1380.0" cy="777.2" r="28.6"/><circle cx="1362.4" cy="792.6" r="19.8"/><circle cx="1397.6" cy="794.8" r="20.9"/></g>
+      <path class="h-path" d="M850.4 903.6 L847.1 902.8 L841.7 901.4 L836.1 900.2 L830.3 899.0 L824.2 897.7 L817.7 896.5 L810.9 895.2 L803.7 893.8 L796.3 892.5 L788.6 891.1 L780.7 889.6 L772.5 888.1 L764.2 886.6 L755.8 885.1 L747.2 883.5 L738.6 881.8 L730.0 880.2 L721.4 878.5 L712.9 876.8 L704.4 875.1 L696.2 873.4 L688.1 871.7 L680.2 870.0 L672.7 868.2 L665.4 866.6 L658.6 864.9 L652.2 863.3 L646.2 861.7 L640.8 860.2 L636.1 858.8 L632.0 857.5 L628.8 856.4 L626.5 855.7 L625.3 855.5 L625.4 856.2 L626.9 858.4 L629.7 863.5 L631.9 872.5 L630.7 883.7 L626.4 892.0 L622.2 896.1 L621.0 896.7 L622.6 895.7 L626.3 894.0 L631.5 892.1 L638.0 890.1 L645.6 888.0 L654.2 885.8 L663.6 883.7 L673.7 881.5 L684.4 879.4 L695.8 877.2 L707.7 875.1 L720.0 873.0 L732.7 870.9 L745.7 868.8 L758.9 866.7 L772.3 864.7 L785.9 862.6 L799.5 860.6 L813.1 858.6 L826.6 856.6 L840.0 854.7 L853.2 852.7 L866.1 850.8 L878.8 848.8 L891.0 846.9 L902.9 845.0 L914.3 843.2 L925.1 841.3 L935.3 839.4 L944.9 837.6 L953.7 835.7 L961.8 833.9 L969.2 832.0 L975.7 830.1 L981.5 828.2 L986.6 826.1 L991.3 823.6 L996.3 819.7 L1001.8 798.1 L1000.9 796.8 L994.4 789.0 L986.7 784.9 L983.0 783.7 L977.4 782.3 L971.3 781.0 L964.7 779.8 L957.5 778.6 L949.7 777.5 L941.4 776.4 L932.6 775.3 L923.3 774.2 L913.6 773.2 L903.5 772.1 L893.1 771.1 L882.5 770.1 L871.6 769.1 L860.6 768.1 L849.5 767.1 L838.4 766.1 L827.2 765.1 L816.2 764.1 L805.2 763.2 L794.4 762.2 L783.9 761.2 L773.7 760.3 L763.7 759.4 L754.2 758.4 L745.2 757.5 L736.6 756.6 L728.7 755.7 L721.4 754.7 L714.8 753.9 L708.9 753.0 L703.9 752.1 L700.4 751.4 L696.9 750.5 L695.2 750.0 L698.4 753.2 L697.7 752.2 L698.8 758.0 L697.2 761.5 L696.9 761.9 L698.1 761.3 L700.5 760.5 L703.7 759.5 L707.5 758.5 L712.1 757.5 L717.1 756.5 L722.7 755.5 L728.6 754.5 L735.0 753.5 L741.7 752.5 L748.8 751.5 L756.1 750.5 L763.6 749.5 L771.3 748.6 L779.1 747.6 L787.0 746.7 L795.0 745.7 L803.1 744.8 L811.1 743.9 L819.0 743.0 L826.8 742.1 L834.6 741.2 L842.1 740.4 L849.4 739.5 L856.5 738.7 L863.2 737.8 L869.7 737.0 L875.8 736.2 L881.4 735.4 L886.7 734.5 L891.4 733.7 L895.6 732.9 L899.3 732.1 L902.5 731.3 L905.1 730.5 L907.4 729.5 L909.4 728.2 L911.2 726.3 L912.4 722.8 L911.6 718.8 L909.6 716.4 L907.5 715.1 L905.4 714.1 L903.2 713.3 L900.8 712.6 L898.2 712.0 L895.3 711.4 L892.3 710.7 L889.0 710.1 L885.5 709.5 L881.9 709.0 L878.1 708.4 L874.1 707.8 L870.1 707.3 L865.9 706.7 L861.6 706.2 L857.3 705.7 L852.9 705.2 L848.5 704.6 L844.2 704.2 L839.8 703.7 L835.5 703.2 L831.2 702.7 L827.0 702.3 L822.9 701.9 L818.9 701.4 L815.1 701.0 L811.5 700.6 L808.0 700.3 L804.7 699.9 L801.7 699.6 L798.9 699.2 L796.4 698.9 L794.2 698.6 L792.3 698.3 L790.8 698.1 L789.2 707.9 L790.9 708.2 L792.9 708.5 L795.2 708.8 L797.7 709.2 L800.5 709.5 L803.6 709.9 L806.9 710.3 L810.4 710.7 L814.0 711.1 L817.9 711.5 L821.8 711.9 L825.9 712.4 L830.1 712.9 L834.3 713.4 L838.6 713.9 L843.0 714.4 L847.3 714.9 L851.7 715.4 L856.0 716.0 L860.3 716.6 L864.5 717.1 L868.6 717.7 L872.6 718.3 L876.4 718.9 L880.1 719.5 L883.6 720.2 L886.9 720.8 L890.0 721.4 L892.8 722.1 L895.3 722.7 L897.5 723.3 L899.4 723.9 L900.7 724.4 L901.6 724.8 L901.7 724.8 L901.1 723.7 L900.9 721.1 L902.0 718.9 L902.7 718.4 L902.6 718.5 L901.6 718.9 L899.7 719.4 L896.9 720.1 L893.5 720.7 L889.5 721.3 L884.9 722.0 L879.7 722.6 L874.2 723.3 L868.1 724.0 L861.8 724.7 L855.0 725.4 L848.0 726.1 L840.7 726.8 L833.1 727.5 L825.4 728.2 L817.6 729.0 L809.6 729.7 L801.6 730.4 L793.5 731.2 L785.5 732.0 L777.5 732.7 L769.6 733.5 L761.8 734.3 L754.2 735.0 L746.8 735.8 L739.6 736.6 L732.8 737.4 L726.2 738.3 L720.0 739.1 L714.1 739.9 L708.7 740.8 L703.7 741.7 L699.2 742.6 L695.1 743.6 L691.3 744.7 L687.7 746.1 L684.0 748.5 L680.5 754.0 L681.1 761.7 L681.6 762.8 L687.8 768.1 L691.2 769.6 L694.6 770.8 L699.9 772.2 L705.3 773.4 L711.5 774.7 L718.3 775.9 L725.8 777.2 L733.9 778.4 L742.5 779.7 L751.6 781.0 L761.1 782.3 L771.0 783.5 L781.3 784.9 L791.9 786.2 L802.6 787.5 L813.6 788.8 L824.6 790.2 L835.7 791.5 L846.7 792.9 L857.7 794.3 L868.6 795.7 L879.4 797.1 L889.8 798.5 L900.0 800.0 L909.9 801.4 L919.3 802.9 L928.3 804.4 L936.7 805.8 L944.5 807.3 L951.6 808.8 L958.0 810.3 L963.5 811.7 L968.0 813.1 L971.3 814.3 L974.8 816.0 L972.3 814.6 L969.0 809.6 L969.3 811.1 L973.7 792.3 L975.3 791.3 L974.2 791.6 L971.2 792.4 L966.8 793.4 L961.2 794.5 L954.6 795.6 L947.0 796.7 L938.5 797.8 L929.2 799.0 L919.2 800.2 L908.6 801.3 L897.3 802.5 L885.5 803.7 L873.3 804.9 L860.7 806.2 L847.7 807.4 L834.5 808.6 L821.0 809.9 L807.4 811.1 L793.7 812.4 L779.9 813.7 L766.2 814.9 L752.6 816.2 L739.1 817.5 L725.8 818.8 L712.7 820.1 L700.0 821.5 L687.6 822.8 L675.7 824.2 L664.2 825.6 L653.3 827.0 L642.9 828.4 L633.0 829.9 L623.8 831.4 L615.2 833.0 L607.0 834.8 L599.2 836.9 L591.4 839.7 L582.8 844.1 L573.6 852.0 L566.3 864.3 L563.9 879.5 L566.6 892.8 L571.3 902.2 L576.4 908.9 L581.5 914.2 L586.6 918.7 L591.9 922.8 L597.4 926.6 L603.2 930.3 L609.4 933.9 L615.9 937.4 L622.7 941.0 L629.8 944.5 L637.2 948.0 L644.8 951.4 L652.7 954.9 L660.8 958.3 L669.1 961.7 L677.4 965.1 L685.9 968.5 L694.4 971.8 L703.0 975.1 L711.5 978.3 L719.9 981.5 L728.3 984.6 L736.5 987.6 L744.5 990.6 L752.3 993.5 L759.9 996.3 L767.1 998.9 L774.1 1001.5 L780.4 1003.9 L786.4 1006.2 L791.9 1008.4 L796.8 1010.4 L800.9 1012.2 L804.2 1013.7 L806.5 1014.9 L809.6 1016.4 Z" fill="url(#h-path)"/>
+      <g class="h-dots"><circle cx="811.9" cy="954.2" r="6.3"/><circle cx="775.3" cy="944.0" r="6.1"/><circle cx="738.7" cy="933.9" r="5.8"/><circle cx="702.1" cy="923.5" r="5.6"/><circle cx="665.8" cy="912.2" r="5.4"/><circle cx="630.1" cy="899.2" r="5.2"/><circle cx="598.6" cy="879.1" r="5.0"/><circle cx="628.0" cy="861.4" r="4.8"/><circle cx="665.3" cy="854.1" r="4.6"/><circle cx="702.9" cy="848.4" r="4.4"/><circle cx="740.6" cy="843.4" r="4.2"/><circle cx="778.3" cy="838.7" r="4.0"/><circle cx="816.0" cy="834.2" r="3.8"/><circle cx="853.7" cy="829.6" r="3.6"/><circle cx="891.4" cy="824.9" r="3.5"/><circle cx="929.1" cy="819.7" r="3.3"/><circle cx="966.5" cy="812.9" r="3.1"/><circle cx="971.3" cy="797.3" r="3.0"/><circle cx="934.0" cy="790.4" r="2.8"/><circle cx="896.3" cy="785.4" r="2.6"/><circle cx="858.6" cy="781.1" r="2.5"/><circle cx="820.8" cy="777.1" r="2.4"/><circle cx="783.0" cy="773.1" r="2.2"/><circle cx="745.2" cy="768.8" r="2.1"/><circle cx="707.6" cy="763.3" r="2.0"/><circle cx="705.6" cy="750.1" r="1.9"/><circle cx="743.2" cy="744.2" r="1.7"/><circle cx="780.9" cy="739.9" r="1.6"/><circle cx="818.7" cy="735.9" r="1.5"/><circle cx="856.5" cy="731.9" r="1.5"/><circle cx="894.2" cy="726.9" r="1.4"/><circle cx="884.3" cy="714.8" r="1.3"/><circle cx="846.6" cy="709.6" r="1.2"/><circle cx="808.8" cy="705.4" r="1.2"/></g>
+      <g class="h-stop h-a1" style="--i:0"><circle class="h-stop-glow" cx="602.9" cy="867.3" r="29.7"/><ellipse class="h-stop-shadow" cx="602.9" cy="879.2" rx="17.8" ry="5.4"/><circle class="h-stop-disc" cx="602.9" cy="867.3" r="17.0" stroke-width="3.7"/><circle class="h-stop-shine" cx="597.5" cy="861.4" r="4.1"/></g><g class="h-stop h-a2" style="--i:1"><circle class="h-stop-glow" cx="819.0" cy="831.8" r="24.1"/><ellipse class="h-stop-shadow" cx="819.0" cy="841.4" rx="14.5" ry="4.4"/><circle class="h-stop-disc" cx="819.0" cy="831.8" r="13.8" stroke-width="3.0"/><circle class="h-stop-shine" cx="814.6" cy="826.9" r="3.3"/></g><g class="h-stop h-a3" style="--i:2"><circle class="h-stop-glow" cx="958.4" cy="792.8" r="19.4"/><ellipse class="h-stop-shadow" cx="958.4" cy="800.5" rx="11.6" ry="3.5"/><circle class="h-stop-disc" cx="958.4" cy="792.8" r="11.1" stroke-width="2.4"/><circle class="h-stop-shine" cx="954.8" cy="788.9" r="2.7"/></g><g class="h-stop h-a4" style="--i:3"><circle class="h-stop-glow" cx="778.8" cy="771.3" r="15.5"/><ellipse class="h-stop-shadow" cx="778.8" cy="777.5" rx="9.3" ry="2.8"/><circle class="h-stop-disc" cx="778.8" cy="771.3" r="8.9" stroke-width="1.9"/><circle class="h-stop-shine" cx="776.0" cy="768.2" r="2.1"/></g><g class="h-stop h-a5" style="--i:4"><circle class="h-stop-glow" cx="763.2" cy="740.8" r="12.3"/><ellipse class="h-stop-shadow" cx="763.2" cy="745.7" rx="7.4" ry="2.3"/><circle class="h-stop-disc" cx="763.2" cy="740.8" r="7.0" stroke-width="1.5"/><circle class="h-stop-shine" cx="760.9" cy="738.3" r="1.7"/></g><g class="h-stop h-a6" style="--i:5"><circle class="h-stop-glow" cx="904.1" cy="723.5" r="10.1"/><ellipse class="h-stop-shadow" cx="904.1" cy="727.5" rx="6.0" ry="1.8"/><circle class="h-stop-disc" cx="904.1" cy="723.5" r="5.8" stroke-width="1.3"/><circle class="h-stop-shine" cx="902.3" cy="721.5" r="1.4"/></g>
+    </svg>
+    <!-- hero-land:end -->
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <section class="tagline" aria-label="Our belief">
+      <div class="wrap">
+        <p>Every child deserves the opportunity to learn, explore, and thrive in a way that works for&nbsp;them.</p>
+        <div class="flourish" aria-hidden="true">✦ ✦ ✦</div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about" aria-labelledby="about-h">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="about-copy">
+            <p class="rule left">The Platform</p>
+            <h2 id="about-h" class="title title-left">Play-based learning for every kind of&nbsp;mind</h2>
+            <p class="big">Monkotorix is an innovative, play-based developmental learning platform designed to help children build essential cognitive, motor, sensory, and everyday life skills through engaging, interactive games.</p>
+            <p>Created with neurodivergent children in mind — including children with autism, ADHD, dyspraxia, and other developmental differences — Monkotorix embraces the belief that there is no single way to learn, and no single path to progress.</p>
+            <ul class="chips" aria-label="Designed with these children in mind">
+              <li class="chip">Autism</li>
+              <li class="chip">ADHD</li>
+              <li class="chip">Dyspraxia (DCD)</li>
+              <li class="chip">Dyslexia</li>
+              <li class="chip">Other developmental differences</li>
+            </ul>
+          </div>
+          <figure class="about-card">
+            <svg class="loop" viewBox="0 0 240 120" aria-hidden="true">
+              <path class="loop-a" d="M120 60 C100 28 40 22 40 60 C40 98 100 92 120 60" fill="none" stroke-width="12" stroke-linecap="round"/>
+              <path class="loop-b" d="M120 60 C140 28 200 22 200 60 C200 98 140 92 120 60" fill="none" stroke-width="12" stroke-linecap="round"/>
+              <circle class="loop-dot a1" cx="54" cy="44" r="7" style="stroke:var(--a1);fill:var(--a1)"/>
+              <circle class="loop-dot" cx="72" cy="86" r="7" style="stroke:var(--a3);fill:var(--a3)"/>
+              <circle class="loop-dot" cx="168" cy="34" r="7" style="stroke:var(--a4);fill:var(--a4)"/>
+              <circle class="loop-dot" cx="196" cy="74" r="7" style="stroke:var(--a5);fill:var(--a5)"/>
+              <circle class="loop-dot" cx="146" cy="86" r="7" style="stroke:var(--a6);fill:var(--a6)"/>
+              <circle class="loop-dot" cx="96" cy="38" r="7" style="stroke:var(--a2);fill:var(--a2)"/>
+            </svg>
+            <blockquote>“There is no single way to learn, and no single path to progress.”</blockquote>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mission" aria-labelledby="mission-h">
+      <div class="wrap">
+        <p class="rule">Our Mission</p>
+        <h2 id="mission-h" class="mission-statement">To make developmental learning <em>accessible, engaging, and empowering</em> for every&nbsp;child.</h2>
+        <div class="bridge">
+          <div class="venn" role="img" aria-label="Monkotorix sits where therapeutic exercises, educational activities, and the games children love to play overlap.">
+            <div class="c c1" aria-hidden="true">Therapeutic<br>exercises</div>
+            <div class="c c2" aria-hidden="true">Educational<br>activities</div>
+            <div class="c c3" aria-hidden="true">Games children<br>love to play</div>
+            <div class="core" aria-hidden="true">Monkotorix</div>
+          </div>
+          <div class="bridge-copy">
+            <p class="big">We aim to bridge the gap between therapeutic exercises, educational activities, and the games children genuinely love to play.</p>
+            <p>By bringing together principles from occupational therapy, developmental psychology, cognitive science, and game-based learning, Monkotorix transforms purposeful skill-building activities into playful, rewarding experiences.</p>
+            <ul class="disciplines" aria-label="The principles we build on">
+              <li class="discipline"><svg class="icon" aria-hidden="true"><use href="#i-hand"/></svg>Occupational therapy</li>
+              <li class="discipline"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg>Developmental psychology</li>
+              <li class="discipline"><svg class="icon" aria-hidden="true"><use href="#i-bulb"/></svg>Cognitive science</li>
+              <li class="discipline"><svg class="icon" aria-hidden="true"><use href="#i-game"/></svg>Game-based learning</li>
+            </ul>
+          </div>
+        </div>
+        <div class="goal">
+          <p><strong>Our goal is simple:</strong> help children develop meaningful skills while having&nbsp;fun.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="skills" aria-labelledby="skills-h">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="rule">What We Help Children Develop</p>
+          <h2 id="skills-h" class="title">Six interconnected areas of childhood development</h2>
+          <p class="lead">Every Monkotorix game is designed around one or more of these areas — so play time quietly becomes practice time.</p>
+        </div>
+        <ol class="areas">
+          <li class="area a1">
+            <div class="area-top">
+              <span class="area-icon"><svg class="icon" aria-hidden="true"><use href="#i-motor"/></svg></span>
+              <span class="area-num">Area 1</span>
+            </div>
+            <h3>Fine Motor Skills &amp; Coordination</h3>
+            <p>Activities designed to support hand-eye coordination, motor planning, bilateral coordination, visual-motor integration, and foundational skills for handwriting.</p>
+            <div class="area-games"><span class="lbl">In the beta</span><a class="tag" href="#game-neurocrew">NeuroCrew<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </li>
+          <li class="area a2">
+            <div class="area-top">
+              <span class="area-icon"><svg class="icon" aria-hidden="true"><use href="#i-focus"/></svg></span>
+              <span class="area-num">Area 2</span>
+            </div>
+            <h3>Attention &amp; Executive Function</h3>
+            <p>Games that encourage sustained attention, working memory, cognitive flexibility, planning, sequencing, and impulse control.</p>
+            <div class="area-games"><span class="lbl">In the beta</span><a class="tag" href="#game-neurocrew">NeuroCrew<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </li>
+          <li class="area a3">
+            <div class="area-top">
+              <span class="area-icon"><svg class="icon" aria-hidden="true"><use href="#i-sensory"/></svg></span>
+              <span class="area-num">Area 3</span>
+            </div>
+            <h3>Sensory Processing &amp; Self&#8209;Regulation</h3>
+            <p>Thoughtfully designed experiences that help children explore sensory information, recognize emotions, and practice strategies for emotional regulation.</p>
+            <div class="area-games"><span class="lbl">In the beta</span><a class="tag" href="#game-neurocrew">NeuroCrew<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><span class="tag soon">More to come</span></div>
+          </li>
+          <li class="area a4">
+            <div class="area-top">
+              <span class="area-icon"><svg class="icon" aria-hidden="true"><use href="#i-think"/></svg></span>
+              <span class="area-num">Area 4</span>
+            </div>
+            <h3>Cognitive Development &amp; Problem-Solving</h3>
+            <p>Engaging challenges that strengthen logical reasoning, pattern recognition, spatial awareness, memory, and problem-solving abilities.</p>
+            <div class="area-games"><span class="lbl">In the beta</span><a class="tag" href="#game-neurocrew">NeuroCrew<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </li>
+          <li class="area a5">
+            <div class="area-top">
+              <span class="area-icon"><svg class="icon" aria-hidden="true"><use href="#i-learn"/></svg></span>
+              <span class="area-num">Area 5</span>
+            </div>
+            <h3>Early Learning &amp; Academic Readiness</h3>
+            <p>Playful activities supporting early literacy, phonological awareness, numeracy, visual discrimination, and foundational learning skills.</p>
+            <div class="area-games"><span class="lbl">In the beta</span><a class="tag" href="#game-olli"><span lang="nl">Lezen met Olli</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="tag" href="#game-neurocrew">NeuroCrew<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+          </li>
+          <li class="area a6">
+            <div class="area-top">
+              <span class="area-icon"><svg class="icon" aria-hidden="true"><use href="#i-everyday"/></svg></span>
+              <span class="area-num">Area 6</span>
+            </div>
+            <h3>Independence &amp; Everyday Skills</h3>
+            <p>Interactive learning experiences that encourage sequencing, decision-making, confidence, and practical skills for everyday life.</p>
+            <div class="area-games"><span class="lbl">Next on the path</span><span class="tag soon">Coming to the platform</span></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="games" aria-labelledby="games-h">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="rule">The Games</p>
+          <h2 id="games-h" class="title">Two games, now in open&nbsp;beta</h2>
+          <p class="lead">Free to play in the browser on tablets, phones and computers. No sign-up, no ads, no tracking — just open a game and play together.</p>
+        </div>
+        <article class="game-panel" id="game-neurocrew" aria-labelledby="neurocrew-h">
+          <div>
+            <div class="game-head"><h3 id="neurocrew-h">NeuroCrew</h3><span class="badge-beta">Beta</span></div>
+            <p class="sub">Coordination practice · <span class="nowrap">Ages 4–8</span></p>
+            <p class="desc">Short, playful practice games made with dyspraxia (DCD) and autism in mind. A friendly buddy shows every move as children trace, pop, catch, copy and balance their way along a magic path through five worlds — with a breathing break always one tap away.</p>
+            <ul class="game-points">
+              <li>21 games in six groups, from hand coordination to logic</li>
+              <li>Separate levels for ages 4–5 and 6–8</li>
+              <li>Calm mode, a slower speed and read-aloud instructions</li>
+              <li>A “Try it for real” idea after every level</li>
+              <li>In English and Dutch</li>
+            </ul>
+            <div class="game-actions">
+              <a class="btn primary" href="/games/neurocrew/"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Play NeuroCrew</a>
+            </div>
+            <div class="game-meta">
+              <span class="tag">Ages 4–8</span>
+              <span class="tag"><span>English · <span lang="nl">Nederlands</span></span></span>
+              <span class="tag">Phone, tablet &amp; computer</span>
+            </div>
+          </div>
+          <div class="game-shot">
+            <img src="/assets/neurocrew.webp" width="640" height="1385" loading="lazy" decoding="async" alt="NeuroCrew’s Magic path on a phone: Bear, the buddy, waves beside the first step, “Copy the moves”, with a winding trail of game stops through the Magic meadow.">
+          </div>
+        </article>
+
+        <article class="game-panel reversed" id="game-olli" aria-labelledby="olli-h">
+          <div class="game-shot">
+            <img src="/assets/lezen-met-olli.webp" width="640" height="1385" loading="lazy" decoding="async" alt="Lezen met Olli on a phone: Olli the owl stands at the start of a winding path through Zonneweide, the first world, with the first three reading games — Letterbos, Ballonnen and Rijmen. In a speech bubble, Olli says hello and invites the child onto the magic path.">
+          </div>
+          <div>
+            <div class="game-head"><h3 id="olli-h" lang="nl">Lezen met Olli</h3><span class="badge-beta">Beta</span></div>
+            <p class="sub">Dutch reading game · <span class="nowrap">Ages 5–8</span></p>
+            <p class="desc">A cheerful Dutch reading game for young children with dyslexia. Olli the owl walks children along a magic path through four worlds of short reading games — letters, sounds, rhymes and words — and reads the instructions aloud.</p>
+            <ul class="game-points">
+              <li>11 reading games plus a movement break</li>
+              <li>Four worlds, three levels and twelve badges to earn</li>
+              <li>No timers or lives — a wrong answer just means try again</li>
+              <li>Bold reading text with wide letter spacing</li>
+              <li>Sound groups like <span lang="nl">“aa”</span>, <span lang="nl">“oe”</span> and <span lang="nl">“ui”</span> always stay together</li>
+              <li>Olli speaks with your device’s Dutch voice — most phones, tablets and computers have one. Without one, the game still works, just without Olli’s voice.</li>
+            </ul>
+            <div class="game-actions">
+              <a class="btn primary" href="/games/lezen-met-olli/" hreflang="nl"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span>Play <span lang="nl">Lezen met Olli</span></span></a>
+            </div>
+            <div class="game-meta">
+              <span class="tag">Ages 5–8</span>
+              <span class="tag"><span>In Dutch (<span lang="nl">Nederlands</span>)</span></span>
+              <span class="tag">Phone, tablet &amp; computer</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="beta-note" aria-labelledby="beta-h">
+          <svg class="icon" aria-hidden="true"><use href="#i-beta"/></svg>
+          <div>
+            <h3 id="beta-h">What “beta” means</h3>
+            <p>Both games are ready to play and learn with — and still growing. You may spot rough edges, and things will change as we learn from families. Progress is saved only in the browser on your device, so it won’t follow you to another device or browser.</p>
+          </div>
+          <a class="btn ghost" href="mailto:hello@monkotorix.com?subject=Beta%20feedback">Share feedback</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section alt" id="different-minds" aria-labelledby="minds-h">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="rule">Designed for Different Minds</p>
+          <h2 id="minds-h" class="title">Learning that adapts to the&nbsp;child</h2>
+          <p class="lead">At Monkotorix, we recognize that every child has a unique combination of strengths, challenges, interests, and developmental needs. That’s why our vision is to create an adaptive learning environment where activities can evolve with each child’s abilities and progress.</p>
+        </div>
+        <p class="minds-quote">“Rather than expecting children to fit a predefined learning model, we want learning to adapt to the&nbsp;child.”</p>
+        <ul class="principles">
+          <li class="principle">
+            <svg class="icon" aria-hidden="true"><use href="#i-calm"/></svg>
+            <div><h3>Unhurried by design</h3><p>Short rounds and no lives to lose. Breaks are built in, and NeuroCrew slows down when a child needs more time.</p></div>
+          </li>
+          <li class="principle">
+            <svg class="icon" aria-hidden="true"><use href="#i-ear"/></svg>
+            <div><h3>Hear every instruction</h3><p>Instructions can be heard and replayed. Olli reads each one aloud, and in NeuroCrew a tap on “Hear it” does the same — or a grown-up can switch on read-aloud for every level.</p></div>
+          </li>
+          <li class="principle">
+            <svg class="icon" aria-hidden="true"><use href="#i-retry"/></svg>
+            <div><h3>Mistakes are part of play</h3><p>No buzzers and nothing to lose. A wrong try brings a gentle hint and another go.</p></div>
+          </li>
+          <li class="principle">
+            <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+            <div><h3>Small wins, celebrated</h3><p>Stars, stickers and badges turn each step forward into something to be proud of.</p></div>
+          </li>
+          <li class="principle">
+            <svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg>
+            <div><h3>Predictable and clear</h3><p>The same clear steps every round, and a magic path that shows the whole plan before play begins.</p></div>
+          </li>
+          <li class="principle">
+            <svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg>
+            <div><h3>Gentle on the senses</h3><p>Motion calms down when a device asks for less, sound and voice can be switched off, and both games come in light and dark.</p></div>
+          </li>
+        </ul>
+        <p class="principles-note">All of this is already part of both beta games.</p>
+      </div>
+    </section>
+
+    <section class="section" id="progress" aria-labelledby="progress-h">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="rule">More Than Games</p>
+          <h2 id="progress-h" class="title">Meaningful progress, together</h2>
+          <p class="lead">We envision a platform that empowers parents, educators, and developmental professionals to better understand and support children’s learning journeys.</p>
+        </div>
+        <ul class="audiences">
+          <li class="audience">
+            <h3>Parents &amp; caregivers</h3>
+            <p class="where">At home</p>
+            <p>Short, playful sessions that fit into everyday family life — and small wins to celebrate together.</p>
+          </li>
+          <li class="audience">
+            <h3>Educators</h3>
+            <p class="where">In classrooms</p>
+            <p>Playful activities that support early learning and readiness for every kind of learner in the group.</p>
+          </li>
+          <li class="audience">
+            <h3>Developmental professionals</h3>
+            <p class="where">Alongside professional support</p>
+            <p>Engaging practice between sessions that complements — never replaces — the work of therapists and specialists.</p>
+          </li>
+        </ul>
+        <div class="roadmap">
+          <div>
+            <p class="rule left">Where we’re heading</p>
+            <h3>Developmental practice that fits into everyday life</h3>
+            <p>Through personalized activities, thoughtful progression, and clear insights into skill development, Monkotorix aims to make developmental practice easier to integrate into everyday life. The beta games take the first steps.</p>
+          </div>
+          <ol>
+            <li><div><b>Personalized activities</b><span>Practice that matches each child’s abilities, interests, and pace.</span><br><em>Started: a NeuroCrew profile shapes its magic path</em></div></li>
+            <li><div><b>Thoughtful progression</b><span>Challenges that grow step by step as skills develop.</span><br><em>Started: levels that grow with the child in both games</em></div></li>
+            <li><div><b>Clear insights</b><span>An easy view of skill development for the grown-ups who support each child.</span><br><em>Coming next</em></div></li>
+          </ol>
+        </div>
+        <div class="values">
+          <p>We believe meaningful progress is built through</p>
+          <ul>
+            <li>curiosity</li>
+            <li>consistency</li>
+            <li>encouragement</li>
+            <li>small achievements worth celebrating</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section vision" id="vision" aria-labelledby="vision-h">
+      <div class="wrap">
+        <p class="rule">Our Vision</p>
+        <h2 id="vision-h" class="sr-only">Our vision</h2>
+        <blockquote>A world where developmental differences never limit a child’s opportunity to learn, grow, and&nbsp;succeed.</blockquote>
+        <p class="lead">We want to make high-quality, developmentally informed learning experiences accessible to families everywhere — at home, in classrooms, and alongside professional support.</p>
+        <p class="closing">Because every small step forward matters.</p>
+      </div>
+    </section>
+
+    <section class="section" id="privacy" aria-labelledby="privacy-h">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="rule">Safe by Design</p>
+          <h2 id="privacy-h" class="title">Made for children. Private by&nbsp;default.</h2>
+        </div>
+        <ul class="safe">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-noaccount"/></svg><b>No accounts</b><span>Nothing to sign up for. Open a game and play.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-noads"/></svg><b>No ads or purchases</b><span>No advertising, no in-app purchases, no upsells.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-notrack"/></svg><b>No tracking</b><span>No analytics, no cookies, and no third-party scripts or fonts.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-device"/></svg><b>Stays on your device</b><span>Progress and settings are kept only in your browser.</span></li>
+        </ul>
+        <p class="disclaimer">Monkotorix games are learning and play activities. They are not a medical device, a diagnosis or a treatment, and they don’t replace professional support. Feel free to show the games to the therapists, specialists and teachers who support your child, and ask which activities fit best.</p>
+        <p class="privacy-link"><a href="/privacy/">Read the full privacy notice</a></p>
+      </div>
+    </section>
+
+    <section class="section alt harbor" id="contact" aria-labelledby="harbor-h">
+      <div class="wrap">
+        <p class="rule">Our Harbor</p>
+        <h2 id="harbor-h" class="title">A Sofmon project</h2>
+        <p class="lead">Monkotorix sails under the flag of <a href="https://www.sofmon.com" rel="noopener">Sofmon</a> — the parent company and legal home behind everything we make — alongside its sister studio, <a href="https://staycove.studio" rel="noopener">Stay&nbsp;Cove&nbsp;Studio</a>.</p>
+        <div class="contact-card">
+          <h3>Tried a game with your child?</h3>
+          <p>We’d love to hear what worked, what didn’t, and what you’d like to see next. Questions and ideas are welcome too.</p>
+          <a class="btn primary" href="mailto:hello@monkotorix.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>hello@monkotorix.com</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#emblem"/></svg>Monkotorix</a>
+    <p class="motto">Big Possibilities for Every Little Mind.</p>
+    <p class="ppd">Play · Discover · Develop</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="mailto:hello@monkotorix.com">hello@monkotorix.com</a>
+      <a href="/games/neurocrew/">NeuroCrew</a>
+      <a href="/games/lezen-met-olli/" hreflang="nl" lang="nl">Lezen met Olli</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="https://www.sofmon.com" rel="noopener">sofmon.com</a>
+    </nav>
+    <p class="legal">Monkotorix is a project of Sofmon B.V. · KvK&nbsp;93115776 · The Netherlands<br>© 2026 Sofmon B.V. All rights reserved.</p>
+  </footer>
+</body>
+</html>

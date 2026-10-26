@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Off the path — Monkotorix</title>
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <script src="/assets/site.js"></script>
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/fraunces-latin-soft-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin-400-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/inter-latin-600-normal.woff2') format('woff2')}
+    :root{color-scheme:light;--bg:#f5edda;--text:#1b2436;--muted:#5a5243;--accent:#e07b38;--accent-ink:#14213a}
+    @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0c1124;--text:#f1e5c8;--muted:#b3bacd;--accent:#e8b46f;--accent-ink:#231607}}
+    :root[data-theme="dark"]{color-scheme:dark;--bg:#0c1124;--text:#f1e5c8;--muted:#b3bacd;--accent:#e8b46f;--accent-ink:#231607}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100svh;display:grid;place-items:center;text-align:center;padding:2rem;line-height:1.6}
+    svg{width:4.5rem;height:4.5rem;margin:0 auto 1.5rem}
+    h1{text-wrap:balance;font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 100;font-weight:650;font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.15;margin-bottom:.75rem}
+    p{color:var(--muted);margin-bottom:2rem;max-width:34ch;margin-inline:auto}
+    a{display:inline-block;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:.85rem 1.6rem}
+    a:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <main>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#14213a"/><circle cx="32" cy="32" r="30" fill="none" stroke="#f2b85e" stroke-opacity=".55" stroke-width="1.5"/><path d="M32 36 C27.5 29.5 17 28.5 17 36 C17 43.5 27.5 42.5 32 36" fill="none" stroke="#3fa39f" stroke-width="5" stroke-linecap="round"/><path d="M32 36 C36.5 29.5 47 28.5 47 36 C47 43.5 36.5 42.5 32 36" fill="none" stroke="#ef9a4c" stroke-width="5" stroke-linecap="round"/><path d="M32 11.5 L33.9 17.1 L39.5 19 L33.9 20.9 L32 26.5 L30.1 20.9 L24.5 19 L30.1 17.1 Z" fill="#f2b85e"/></svg>
+    <h1>This step isn’t on the path</h1>
+    <p>The page you were looking for has wandered off. Every path has a few detours — let’s head back.</p>
+    <a href="/">Back to Monkotorix</a>
+  </main>
+</body>
+</html>

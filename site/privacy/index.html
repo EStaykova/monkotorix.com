@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy notice — Monkotorix</title>
+  <meta name="description" content="How the Monkotorix website and its beta games, NeuroCrew and Lezen met Olli, handle data: no accounts, no ads, no tracking, and progress kept only on your device.">
+  <link rel="canonical" href="https://monkotorix.com/privacy/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monkotorix">
+  <meta property="og:title" content="Privacy notice — Monkotorix">
+  <meta property="og:description" content="No accounts, no ads, no tracking — progress stays on your device.">
+  <meta property="og:url" content="https://monkotorix.com/privacy/">
+  <meta property="og:image" content="https://monkotorix.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5edda" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c1124" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <script src="/assets/site.js"></script>
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/fraunces-latin-soft-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/inter-latin-400-normal.woff2') format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/inter-latin-600-normal.woff2') format('woff2')}
+    :root{color-scheme:light;--bg:#f5edda;--surface:#fbf7ee;--text:#1b2436;--muted:#5a5243;--line:rgba(27,36,54,.14);--accent-text:#9a4a17;--link:#1b5a62;--focus:#1b5a62}
+    @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0c1124;--surface:#141c3e;--text:#f1e5c8;--muted:#b3bacd;--line:rgba(217,164,95,.22);--accent-text:#e2b06e;--link:#eec584;--focus:#eec584}}
+    :root[data-theme="dark"]{color-scheme:dark;--bg:#0c1124;--surface:#141c3e;--text:#f1e5c8;--muted:#b3bacd;--line:rgba(217,164,95,.22);--accent-text:#e2b06e;--link:#eec584;--focus:#eec584}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:1.0625rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--link);text-underline-offset:.18em}
+    :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+    .wrap{max-width:40rem;margin:0 auto;padding:2rem 1.5rem 4rem}
+    .back{display:inline-flex;align-items:center;gap:.6rem;color:var(--text);text-decoration:none;font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 100;font-weight:650;font-size:1.2rem}
+    .back svg{width:2.2rem;height:2.2rem}
+    .eyebrow{margin:3rem 0 .5rem;font-size:.8rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--accent-text)}
+    h1,h2{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 100;font-weight:600;line-height:1.15}
+    h1{font-size:clamp(2rem,6vw,2.8rem);margin:0 0 1rem}
+    h2{font-size:1.45rem;margin:2.6rem 0 .7rem}
+    h3{font-size:1.05rem;margin:1.6rem 0 .4rem}
+    p,ul{margin:0 0 1rem}
+    ul{padding-left:1.25rem}
+    li{margin:.3rem 0}
+    .muted{color:var(--muted)}
+    .summary{background:var(--surface);border:1px solid var(--line);border-radius:1.25rem;padding:1.2rem 1.4rem}
+    .summary p{margin:0}
+    code{font-size:.92em;background:var(--surface);border:1px solid var(--line);border-radius:.35rem;padding:.05em .35em}
+    footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#14213a"/><circle cx="32" cy="32" r="30" fill="none" stroke="#f2b85e" stroke-opacity=".55" stroke-width="1.5"/><path d="M32 36 C27.5 29.5 17 28.5 17 36 C17 43.5 27.5 42.5 32 36" fill="none" stroke="#3fa39f" stroke-width="5" stroke-linecap="round"/><path d="M32 36 C36.5 29.5 47 28.5 47 36 C47 43.5 36.5 42.5 32 36" fill="none" stroke="#ef9a4c" stroke-width="5" stroke-linecap="round"/><path d="M32 11.5 L33.9 17.1 L39.5 19 L33.9 20.9 L32 26.5 L30.1 20.9 L24.5 19 L30.1 17.1 Z" fill="#f2b85e"/></svg>Monkotorix</a>
+
+    <p class="eyebrow">Safe by design</p>
+    <h1>Privacy notice</h1>
+    <p class="muted">Last updated: 24 October 2026</p>
+
+    <div class="summary">
+      <p><strong>In short:</strong> your progress is saved only in this browser on this device. We can’t see it, and it isn’t sent anywhere. There are no accounts, no ads and no tracking. You can delete everything at any time.</p>
+    </div>
+
+    <h2>Who we are</h2>
+    <p>Monkotorix is a project of Sofmon B.V., based in the Netherlands (KvK 93115776). If you have a question about privacy, email <a href="mailto:hello@monkotorix.com">hello@monkotorix.com</a>.</p>
+
+    <h2>This website</h2>
+    <p>The website at monkotorix.com is a set of static pages. Its fonts, images and code are all served from this website itself, so your browser doesn’t load anything from other websites while you read it. We don’t use cookies, analytics or advertising.</p>
+    <p>If you use the light/dark switch, your choice is remembered in your browser’s local storage under the name <code>monkotorix-theme</code>. It never leaves your device.</p>
+    <p>The website and the games are hosted on GitHub Pages, a service of GitHub, Inc. in the United States. Like any web host, GitHub receives the technical information needed to deliver the pages to you, such as your IP address and browser type. GitHub logs visitors’ IP addresses and stores them for security purposes. That information may be processed in the United States; GitHub explains how it handles it in its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">privacy statement</a>. We rely on our legitimate interest in delivering a safe, working website. We don’t receive or use this information to track or profile visitors.</p>
+    <p>If you email us, we use your message and email address only to reply to you, and we delete them when they’re no longer needed for that.</p>
+
+    <h2>The beta games</h2>
+    <p>Both games run entirely in your browser. They don’t have accounts and don’t send what a child does anywhere — not to us, and not to anyone else.</p>
+
+    <h3>NeuroCrew</h3>
+    <p>NeuroCrew stores its settings and progress in your browser’s local storage under <code>coordination-games:settings</code>. This includes the language, age band, sound, read-aloud, calm-mode and speed settings, stars, stickers and progress along the magic path.</p>
+    <p>If a grown-up sets up a profile, it can also hold a first name, an age, an optional gender, the “what helps” and “Practise most” choices, and a favorite sticker theme. The buddy a child picks is saved too, with or without a profile. All of this is used only to fit the games to the child, and it stays on the device. You can delete it at any time with <strong>Remove profile</strong> in the game’s profile and settings.</p>
+
+    <h3 lang="nl">Lezen met Olli</h3>
+    <p>Lezen met Olli stores its settings and progress in your browser’s local storage under <code>lezen-met-olli</code>: voice and sound settings, the chosen voice, speed and pitch, the level, stars, opened treasure chests and stickers. It doesn’t ask for a name or any other personal details. <strong lang="nl">Opnieuw beginnen</strong> in the game removes the stars, stickers and badges.</p>
+
+    <h3>Read-aloud voices</h3>
+    <p>Both games read instructions aloud with the speech voices your browser offers. Some of those voices are online voices — for example Microsoft Edge’s “Online (Natural)” voices and Chrome’s voices named “Google …”. When one of those is used, the browser sends the sentence being read to its maker’s speech service. Only the game’s own sentences and words are sent this way, never anything about the child. This is part of how the browser works, not something the games do.</p>
+    <p>Lezen met Olli automatically picks the most natural-sounding Dutch voice, and in Microsoft Edge that is usually an online voice. To keep speech on your device, choose another voice under <span lang="nl">“Geluid en stem”</span> (Edge’s online voices are marked <span lang="nl">“(natuurlijk)”</span>), or switch the voice off there. NeuroCrew uses the first voice your device offers for the chosen language.</p>
+
+    <h2>Deleting everything</h2>
+    <p>Because everything is kept on your device, you are in control. Use the reset options in each game, or clear the site data for monkotorix.com in your browser’s settings to remove all stored progress, profiles and settings at once. Private or incognito windows forget everything when they close.</p>
+    <p>On a shared device — a family tablet or a classroom computer — everyone using the same browser sees the same progress and profile.</p>
+
+    <h2>Your rights</h2>
+    <p>You can ask us what personal data we hold about you (normally none, apart from emails you sent us), and ask us to correct or delete it, or object to how we use it. Email <a href="mailto:hello@monkotorix.com">hello@monkotorix.com</a>. If you’re not happy with our answer, you can complain to the Dutch Data Protection Authority, the <a href="https://autoriteitpersoonsgegevens.nl" rel="noopener" lang="nl">Autoriteit Persoonsgegevens</a>.</p>
+
+    <h2>Children</h2>
+    <p>Monkotorix is made for children to use with the grown-ups who support them. We don’t collect or receive personal information from children through the website or the games. NeuroCrew’s optional profile is filled in by a grown-up and never leaves the device.</p>
+
+    <h2>Changes</h2>
+    <p>If the games ever start to work differently — for example, if we add optional accounts or progress sharing — we will update this notice first and say so clearly on the website.</p>
+
+    <footer>
+      <p><a href="/">Back to Monkotorix</a> · <a href="mailto:hello@monkotorix.com">hello@monkotorix.com</a></p>
+      <p>© 2026 Sofmon B.V. All rights reserved.</p>
+    </footer>
+  </main>
+</body>
+</html>
