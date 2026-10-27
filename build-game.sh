@@ -99,7 +99,7 @@ build_lezen_met_olli() {
     "${LEZENMETOLLI_DIR:-$ROOT/../lezenmetollie}" \
     "<title>OllyReads</title>" \
     "OllyReads (beta) — early-reading game" \
-    "A playful early-reading game with Olli the owl, in English, Dutch and Bulgarian. Short games for letters, sounds, rhymes and words, adapted to each language. No account, no ads, no tracking." \
+    "A playful early-reading game with Olli the owl, in Dutch, English and Bulgarian. Short games for letters, sounds, rhymes and words, adapted to each language. No account, no ads, no tracking." \
     "og-lezen-met-olli.jpg"
 }
 

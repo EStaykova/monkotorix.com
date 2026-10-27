@@ -16,7 +16,7 @@ served from the same site under `/games/<game>/`, and zero third-party requests.
 | `site/assets/site.js` | The only script: the light/dark theme switch (follows the system until a visitor picks a theme). |
 | `site/assets/` | Self-hosted fonts (Fraunces, Inter), icons, game screenshots and social-preview images. |
 | `site/games/spraklydoo/` | **SpraklyDoo** (beta), built from `../spraklydoo`. |
-| `site/games/lezen-met-olli/` | **OllyReads** (beta early-reading game in English, Dutch and Bulgarian), built from `../lezenmetollie`. The English and Bulgarian content and the language switch were added to the built bundle; rebuilding from the Dutch-only source would remove them. |
+| `site/games/lezen-met-olli/` | **OllyReads** (beta early-reading game in Dutch, English and Bulgarian), built from `../lezenmetollie`. The English and Bulgarian content and the language switch were added to the built bundle; rebuilding from the Dutch-only source would remove them. |
 | `site/privacy/` | Privacy notice for the website and both games. |
 | `site/404.html`, `robots.txt`, `sitemap.xml`, `.nojekyll` | Hosting files. |
 | `build-game.sh` | Rebuilds one or both games into `site/games/`. |
