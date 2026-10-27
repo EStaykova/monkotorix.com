@@ -2,7 +2,7 @@
 # Rebuild one beta game into site/games/<slug>/.
 #
 #   ./build-game.sh spraklydoo        # SpraklyDoo       <- ../spraklydoo       (or $SPRAKLYDOO_DIR)
-#   ./build-game.sh lezen-met-olli   # Lezen met Olli  <- ../lezenmetollie   (or $LEZENMETOLLI_DIR)
+#   ./build-game.sh lezen-met-olli   # OllyReads  <- ../lezenmetollie   (or $LEZENMETOLLI_DIR)
 #   ./build-game.sh all              # both
 #
 # Run this whenever a game changes and you want the website copy updated.
@@ -97,8 +97,8 @@ build_spraklydoo() {
 build_lezen_met_olli() {
   build lezen-met-olli \
     "${LEZENMETOLLI_DIR:-$ROOT/../lezenmetollie}" \
-    "<title>Lezen met Olli</title>" \
-    "Lezen met Olli (bèta) — speel in je browser" \
+    "<title>OllyReads</title>" \
+    "OllyReads (bèta) — speel in je browser" \
     "Een vrolijk Nederlands leesspel voor kinderen met dyslexie, met Olli de uil. Geen account, geen reclame, geen tracking. Een Monkotorix bèta." \
     "og-lezen-met-olli.jpg"
 }
