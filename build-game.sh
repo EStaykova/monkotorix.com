@@ -98,8 +98,8 @@ build_lezen_met_olli() {
   build lezen-met-olli \
     "${LEZENMETOLLI_DIR:-$ROOT/../lezenmetollie}" \
     "<title>OllyReads</title>" \
-    "OllyReads (bèta) — speel in je browser" \
-    "Een vrolijk Nederlands leesspel voor kinderen met dyslexie, met Olli de uil. Geen account, geen reclame, geen tracking. Een Monkotorix bèta." \
+    "OllyReads (beta) — Dutch reading game" \
+    "A playful Dutch reading game for beginning readers, with Olli the owl. Calm, inclusive activities build confidence with letters, sounds, rhymes and words. More languages are planned, with practice adapted to each language. No account, no ads, no tracking." \
     "og-lezen-met-olli.jpg"
 }
 
