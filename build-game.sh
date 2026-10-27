@@ -1,7 +1,7 @@
 #!/bin/bash
 # Rebuild one beta game into site/games/<slug>/.
 #
-#   ./build-game.sh neurocrew        # NeuroCrew       <- ../neurocrew       (or $NEUROCREW_DIR)
+#   ./build-game.sh spraklydoo        # SpraklyDoo       <- ../spraklydoo       (or $SPRAKLYDOO_DIR)
 #   ./build-game.sh lezen-met-olli   # Lezen met Olli  <- ../lezenmetollie   (or $LEZENMETOLLI_DIR)
 #   ./build-game.sh all              # both
 #
@@ -22,7 +22,7 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 SITE="$ROOT/site"
 ORIGIN="https://monkotorix.com"
 
-# The site's own policy, adapted for the games (NeuroCrew shipped the same one in _headers).
+# The site's own policy, adapted for the games (SpraklyDoo shipped the same one in _headers).
 CSP="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; manifest-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
 
 # A subshell function, so the EXIT trap cleans the temp dir up on success and on failure.
@@ -85,13 +85,13 @@ PY
   echo "Updated $SITE/games/$slug"
 )
 
-build_neurocrew() {
-  build neurocrew \
-    "${NEUROCREW_DIR:-$ROOT/../neurocrew}" \
-    "<title>NeuroCrew – Coordination practice games</title>" \
-    "NeuroCrew (beta) — play in your browser" \
+build_spraklydoo() {
+  build spraklydoo \
+    "${SPRAKLYDOO_DIR:-$ROOT/../spraklydoo}" \
+    "<title>SpraklyDoo – Coordination practice games</title>" \
+    "SpraklyDoo (beta) — play in your browser" \
     "Playful coordination practice games for neurodivergent children aged 4 to 8, in English and Dutch. No accounts, no ads, no tracking. A Monkotorix beta." \
-    "og-neurocrew.jpg"
+    "og-spraklydoo.jpg"
 }
 
 build_lezen_met_olli() {
@@ -104,8 +104,8 @@ build_lezen_met_olli() {
 }
 
 case "${1:-all}" in
-  neurocrew) build_neurocrew ;;
+  spraklydoo) build_spraklydoo ;;
   lezen-met-olli) build_lezen_met_olli ;;
-  all) build_neurocrew; build_lezen_met_olli ;;
-  *) echo "usage: $0 [neurocrew|lezen-met-olli|all]" >&2; exit 2 ;;
+  all) build_spraklydoo; build_lezen_met_olli ;;
+  *) echo "usage: $0 [spraklydoo|lezen-met-olli|all]" >&2; exit 2 ;;
 esac
