@@ -98,8 +98,8 @@ build_lezen_met_olli() {
   build lezen-met-olli \
     "${LEZENMETOLLI_DIR:-$ROOT/../lezenmetollie}" \
     "<title>OllyReads</title>" \
-    "OllyReads (beta) — Dutch reading game" \
-    "A playful Dutch reading game for beginning readers, with Olli the owl. Calm, inclusive activities build confidence with letters, sounds, rhymes and words. More languages are planned, with practice adapted to each language. No account, no ads, no tracking." \
+    "OllyReads (beta) — early-reading game" \
+    "A playful early-reading game with Olli the owl, in English, Dutch and Bulgarian. Short games for letters, sounds, rhymes and words, adapted to each language. No account, no ads, no tracking." \
     "og-lezen-met-olli.jpg"
 }
 
